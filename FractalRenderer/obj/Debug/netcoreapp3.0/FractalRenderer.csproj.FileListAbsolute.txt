@@ -1,0 +1,9 @@
+C:\Users\cjell\source\repos\FractalExplorer\FractalRenderer\bin\Debug\netcoreapp3.0\FractalRenderer.deps.json
+C:\Users\cjell\source\repos\FractalExplorer\FractalRenderer\bin\Debug\netcoreapp3.0\FractalRenderer.dll
+C:\Users\cjell\source\repos\FractalExplorer\FractalRenderer\bin\Debug\netcoreapp3.0\FractalRenderer.pdb
+C:\Users\cjell\source\repos\FractalExplorer\FractalRenderer\obj\Debug\netcoreapp3.0\FractalRenderer.csprojAssemblyReference.cache
+C:\Users\cjell\source\repos\FractalExplorer\FractalRenderer\obj\Debug\netcoreapp3.0\FractalRenderer.AssemblyInfoInputs.cache
+C:\Users\cjell\source\repos\FractalExplorer\FractalRenderer\obj\Debug\netcoreapp3.0\FractalRenderer.AssemblyInfo.cs
+C:\Users\cjell\source\repos\FractalExplorer\FractalRenderer\obj\Debug\netcoreapp3.0\FractalRenderer.dll
+C:\Users\cjell\source\repos\FractalExplorer\FractalRenderer\obj\Debug\netcoreapp3.0\FractalRenderer.pdb
+C:\Users\cjell\source\repos\FractalExplorer\FractalRenderer\bin\Debug\netcoreapp3.0\FractalRenderer.xml

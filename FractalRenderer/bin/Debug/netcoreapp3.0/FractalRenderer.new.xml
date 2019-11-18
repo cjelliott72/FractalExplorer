@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+    <assembly>
+        <name>FractalRenderer</name>
+    </assembly>
+    <members>
+        <member name="T:FractalRenderer.IFractal">
+            <summary>
+            Interface for Fractal definition classes
+            </summary>
+        </member>
+        <member name="P:FractalRenderer.IFractal.MaxValueExtent">
+            <summary>
+            The upper limit of Complex Z, beyond which the value trends towards infinity
+            </summary>
+        </member>
+        <member name="M:FractalRenderer.IFractal.IterationCount(System.Numerics.Complex,System.Int32)">
+            <summary>
+            Returns the number of calculated iterations below the MaxValueExtent, or the IterationLimit if there are too many
+            </summary>
+            <param name="c">Complex C is the 'window' of coordinates in the iteration calculation</param>
+            <param name="iterationLimit">Maximum number of calculations to attempt </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="T:FractalRenderer.Mandelbrot">
+            <summary>
+            Interface for Fractal definition classes
+            </summary>
+        </member>
+        <member name="P:FractalRenderer.Mandelbrot.MaxValueExtent">
+            <summary>
+            The upper limit of Complex Z, beyond which the value trends towards infinity
+            </summary>
+        </member>
+        <member name="M:FractalRenderer.Mandelbrot.IterationCount(System.Numerics.Complex,System.Int32)">
+            <summary>
+            Returns the number of calculated iterations below the MaxValueExtent, or the IterationLimit if there are too many
+            </summary>
+            <param name="c">Complex C is the 'window' of coordinates in the iteration calculation</param>
+            <param name="iterationLimit">Maximum number of calculations to attempt </param>
+            <returns>
+            </returns>
+        </member>
+    </members>
+</doc>

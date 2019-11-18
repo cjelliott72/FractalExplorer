@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FractalRenderer</name>
+    </assembly>
+    <members>
+        <member name="T:FractalRenderer.BitmapRenderer">
+            <summary>
+            This class renders the Fractal view in Bitmap format
+            </summary>
+        </member>
+        <member name="M:FractalRenderer.BitmapRenderer.#ctor(FractalRenderer.IFractal,FractalRenderer.FractalColorType,System.Int32)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="fractal">Initialiser for Fractal property</param>
+            <param name="colorType">Initialiser for ColorType property</param>
+            <param name="maxIterations">Initialiser for MaxIterations property</param>
+        </member>
+        <member name="P:FractalRenderer.BitmapRenderer.Fractal">
+            <summary>
+            An instance of IFractal to be rendered
+            </summary>
+        </member>
+        <member name="P:FractalRenderer.BitmapRenderer.ColorType">
+            <summary>
+            The color scheme to be used in the Bitmap
+            </summary>
+        </member>
+        <member name="P:FractalRenderer.BitmapRenderer.MaxIterations">
+            <summary>
+            The maximum number of iterations to be calculated for each pixel.
+            </summary>
+            <remarks>
+            Higher values will produce more fine detail but will take longer to calculate
+            </remarks>
+        </member>
+        <member name="M:FractalRenderer.BitmapRenderer.Render(System.Int32,System.Int32,System.Drawing.Imaging.PixelFormat,FractalRenderer.PlotWindow)">
+            <summary>
+            This asynchronous method will render the Fractal Bitmap using the coordinates provided in the PlotWindow struct
+            </summary>
+            <param name="height">Height in pixels of the output Bitmap</param>
+            <param name="width">Width in pixels of the output Bitmap</param>
+            <param name="pixelFormat">Specifies the System.Drawing.Imaging pixel format for Bitmap pixel colors</param>
+            <param name="plotWindow">PlotWindow struct containing the real and imaginary coordinates the Fractal should be plotted against</param>
+            <returns>Task object containing the Bitmap image</returns>
+        </member>
+        <member name="T:FractalRenderer.FractalColorType">
+            <summary>
+            Enumerated Type used to indicate the color scheme used when rendering Fractal Bitmap
+            </summary>
+        </member>
+        <member name="F:FractalRenderer.FractalColorType.BlackAndWhite">
+            <summary>
+            Black, White and Grey color scheme
+            </summary>
+        </member>
+        <member name="F:FractalRenderer.FractalColorType.Color">
+            <summary>
+            Full Color scheme
+            </summary>
+        </member>
+        <member name="T:FractalRenderer.IFractal">
+            <summary>
+            Interface for Fractal definition classes
+            </summary>
+        </member>
+        <member name="P:FractalRenderer.IFractal.MaxValueExtent">
+            <summary>
+            The upper limit of Complex Z, beyond which the value trends towards infinity
+            </summary>
+        </member>
+        <member name="M:FractalRenderer.IFractal.IterationCount(System.Numerics.Complex,System.Int32)">
+            <summary>
+            Returns the number of calculated iterations below the MaxValueExtent, or the IterationLimit if there are too many
+            </summary>
+            <param name="c">Complex C is the 'window' of coordinates in the iteration calculation</param>
+            <param name="iterationLimit">Maximum number of calculations to attempt </param>
+            <returns>The number of calculated iterations or the IterationLimit if there are too many</returns>
+        </member>
+        <member name="T:FractalRenderer.Mandelbrot">
+            <summary>
+            IFractal implementation of the Mandelbrot Set
+            </summary>
+        </member>
+        <member name="M:FractalRenderer.Mandelbrot.#ctor(System.Double)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="maxValueExtent">Initialisation value for MaxValueExtent</param>
+        </member>
+        <member name="P:FractalRenderer.Mandelbrot.MaxValueExtent">
+            <inheritdoc/>
+        </member>
+        <member name="M:FractalRenderer.Mandelbrot.IterationCount(System.Numerics.Complex,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="T:FractalRenderer.PlotWindow">
+            <summary>
+            This struct encapsulates the real and imaginary coordinates for the graph a Fractal will be rendered against
+            </summary>
+        </member>
+        <member name="M:FractalRenderer.PlotWindow.#ctor(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="realStart">Initial value for RealStart</param>
+            <param name="realEnd">Initial value for RealEnd</param>
+            <param name="imagStart">Initial value for ImagStart</param>
+            <param name="imagEnd">Initial value for ImagEnd</param>
+        </member>
+        <member name="P:FractalRenderer.PlotWindow.RealStart">
+            <summary>
+            The start coordinate of the Real (x dimension) window
+            </summary>
+        </member>
+        <member name="P:FractalRenderer.PlotWindow.RealEnd">
+            <summary>
+            The end coordinate of the Real (x dimension) window
+            </summary>
+        </member>
+        <member name="P:FractalRenderer.PlotWindow.ImagStart">
+            <summary>
+            The start coordinate of the Imaginary (y dimension) window
+            </summary>
+        </member>
+        <member name="P:FractalRenderer.PlotWindow.ImagEnd">
+            <summary>
+            The end coordinate of the Imaginary (y dimension) window
+            </summary>
+        </member>
+    </members>
+</doc>

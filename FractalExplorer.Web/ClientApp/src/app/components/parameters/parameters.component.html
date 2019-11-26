@@ -1,0 +1,23 @@
+<form [formGroup]="parametersForm" (ngSubmit)="onSubmit()">
+  <label>
+    x Minimum:
+    <input type="number" formControlName="xMinimum" required/>
+  </label>
+
+  <label>
+    x Maximum:
+    <input type="number" formControlName="xMaximum" required/>
+  </label>
+
+  <label>
+    y Minimum:
+    <input type="number" formControlName="yMinimum" required/>
+  </label>
+
+  <label>
+    y Maximum:
+    <input type="number" formControlName="yMaximum" required/>
+  </label>
+  <button type="submit" [disabled]="!parametersForm.valid">Submit</button>
+</form>
+<button (click)="updateY()">Update</button>

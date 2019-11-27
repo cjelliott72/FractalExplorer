@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FractalService } from '../../services/fractal.service';
 
@@ -7,23 +7,26 @@ import { FractalService } from '../../services/fractal.service';
   selector: 'app-parameters',
   templateUrl: './parameters.component.html',
 })
-export class ParametersComponent {
+export class ParametersComponent implements OnInit {
   imageToShow: any;
   isImageLoading: any;
   imageWidth: number = 600;
   imageHeight: number = 600;
-
-  parametersForm = this.fb.group({
-    xMinimum: ['', Validators.required],
-    xMaximum: ['', Validators.required],
-    yMinimum: ['', Validators.required],
-    yMaximum: ['', Validators.required],
-  });
+  parametersForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private fractalService: FractalService,
     private sanitizer: DomSanitizer) { }
+
+  ngOnInit() {
+    this.parametersForm = this.fb.group({
+      xMinimum: ['-2', Validators.required],
+      xMaximum: ['2', Validators.required],
+      yMinimum: ['-2', Validators.required],
+      yMaximum: ['2', Validators.required],
+    });
+  }
 
   onSubmit() {
     this.isImageLoading = true;

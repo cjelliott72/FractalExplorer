@@ -13,6 +13,7 @@ export class ParametersComponent implements OnInit {
   imageWidth: number = 600;
   imageHeight: number = 600;
   parametersForm: FormGroup;
+  originalData: any;
 
   constructor(
     private fb: FormBuilder,
@@ -26,6 +27,7 @@ export class ParametersComponent implements OnInit {
       yMinimum: ['-2', Validators.required],
       yMaximum: ['2', Validators.required],
     });
+    this.originalData = this.parametersForm.value;
   }
 
   onSubmit() {
@@ -41,5 +43,10 @@ export class ParametersComponent implements OnInit {
         this.isImageLoading = false;
         console.log(error);
       });
+  }
+
+  protected resetFormData() {
+    this.parametersForm.setValue(this.originalData);
+    this.parametersForm.markAsPristine();
   }
 }

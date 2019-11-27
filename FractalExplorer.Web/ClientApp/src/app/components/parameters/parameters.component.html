@@ -1,7 +1,7 @@
 <form [formGroup]="parametersForm" (ngSubmit)="onSubmit()">
   <mat-form-field appearance="fill">
     <mat-label>x Axis Minimum</mat-label>
-    <input type="number" matInput placeholder="x Axis Minimum" formControlName="xMinimum" step="0.1">
+    <input type="number" matInput placeholder="x Axis Minimum" formControlName="xMinimum" step="0.1" value="-2">
     <mat-error *ngIf="parametersForm.get('xMinimum').invalid">Value is required</mat-error>
   </mat-form-field>
 
@@ -24,6 +24,7 @@
   </mat-form-field>
 
   <button type="submit" mat-stroked-button color="primary" [disabled]="!parametersForm.valid">Submit</button>
+  <button (click)="resetFormData()" mat-stroked-button [disabled]="parametersForm.pristine">Reset</button>
 </form>
 <div>
   <img [src]="imageToShow"

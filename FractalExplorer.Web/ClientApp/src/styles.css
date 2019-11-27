@@ -1,5 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+  background-color: black;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+form.parameters {
+  max-width: 200px;
+  margin: 2px;
+  float: right;
+  background-color: bisque;
+}
+
+  form.parameters > mat-form-field {
+    margin-left: 10px;
+  }
+
+  form.parameters > div {
+    text-align: center;
+  }

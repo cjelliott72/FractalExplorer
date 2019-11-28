@@ -14,8 +14,7 @@ export class ParametersComponent implements OnInit {
   imageWidth: number = 600;
   imageHeight: number = 600;
   parametersForm: FormGroup;
-  errorXMinMatcher = new CrossFieldXMinErrorMatcher();
-  errorYMinMatcher = new CrossFieldYMinErrorMatcher();
+  errorMatcher = new CrossFieldErrorMatcher();
   originalData: any;
 
   constructor(
@@ -76,16 +75,7 @@ export const yMinimumLessThanMaximumValidator: ValidatorFn = (control: FormGroup
 }
 
 /** Error when the parent is invalid */
-class CrossFieldXMinErrorMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    if (control) {
-      return (control.dirty || control.touched) && control.parent.invalid;
-    }
-    return false;
-  }
-}
-
-class CrossFieldYMinErrorMatcher implements ErrorStateMatcher {
+class CrossFieldErrorMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     if (control) {
       return (control.dirty || control.touched) && control.parent.invalid;

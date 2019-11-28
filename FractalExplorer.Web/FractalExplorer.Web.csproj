@@ -24,6 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\components\parameters\parameters.component.ts~RFd7d9270.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FractalRenderer\FractalRenderer.csproj" />
   </ItemGroup>
 

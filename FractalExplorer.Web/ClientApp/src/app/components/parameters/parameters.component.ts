@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup, ValidatorFn, ValidationErrors, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FractalService } from '../../services/fractal.service';
 import { ErrorStateMatcher } from '@angular/material/core';
@@ -27,11 +27,11 @@ export class ParametersComponent implements OnInit {
       xGroup: this.fb.group({
         xMinimum: ['-2', Validators.required],
         xMaximum: ['2', Validators.required]
-      }, { validators: xMinimumLessThanMaximumValidator }),
+      }, { validators: MinimumLessThanMaximumValidator('xMinimum', 'xMaximum') }),
       yGroup: this.fb.group({
         yMinimum: ['-2', Validators.required],
         yMaximum: ['2', Validators.required]
-      }, { validators: yMinimumLessThanMaximumValidator }),
+      }, { validators: MinimumLessThanMaximumValidator('yMinimum', 'yMaximum') }),
     });
 
     this.originalData = this.parametersForm.value;
@@ -58,20 +58,14 @@ export class ParametersComponent implements OnInit {
   }
 }
 
-export const xMinimumLessThanMaximumValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
-  const xMin = control.get('xMinimum');
-  const xMax = control.get('xMaximum');
-  const condition = xMin.value != null && xMax.value != null && xMin.value >= xMax.value;
+function MinimumLessThanMaximumValidator(minControl: string, maxControl: string) {
+  return function (control: FormGroup) {
+    const cMin = control.get(minControl);
+    const cMax = control.get(maxControl);
+    const condition = cMin && cMax && cMin.value != null && cMax.value != null && cMin.value >= cMax.value;
 
-  return condition ? { 'xMinNotLessThanMax': true } : null;
-}
-
-export const yMinimumLessThanMaximumValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
-  const yMin = control.get('yMinimum');
-  const yMax = control.get('yMaximum');
-  const condition = yMin.value != null && yMax.value != null && yMin.value >= yMax.value;
-
-  return condition ? { 'yMinNotLessThanMax': true } : null;
+    return condition ? { 'minNotLessThanMax': true } : null;
+  }
 }
 
 /** Error when the parent is invalid */

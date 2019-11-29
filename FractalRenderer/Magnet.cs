@@ -3,15 +3,15 @@
 namespace FractalRenderer
 {
     /// <summary>
-    /// IFractal implementation of the Mandelbrot Set
+    /// IFractal implementation of the Magnet Set
     /// </summary>
-    public class Mandelbrot : IFractal
+    public class Magnet : IFractal
     {
         /// <summary>
         /// Class constructor
         /// </summary>
         /// <param name="maxValueExtent">Initialisation value for MaxValueExtent</param>
-        public Mandelbrot(double maxValueExtent = 2d)
+        public Magnet(double maxValueExtent = 2d)
         {
             MaxValueExtent = maxValueExtent;
         }
@@ -27,7 +27,7 @@ namespace FractalRenderer
 
             while (Complex.Abs(z) <= MaxValueExtent && n < iterationLimit)
             {
-                z = Complex.Pow(z, 2d) + c;
+                z = Complex.Pow((Complex.Pow(z, 2d) + (c - 1)) / (2 * z + (c - 2)), 2d);
                 n++;
             }
 

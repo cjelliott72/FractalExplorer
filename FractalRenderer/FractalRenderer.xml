@@ -37,6 +37,23 @@
             <param name="maxIterations">The maximum number of iterations to be calculated for each pixel. Higher values will produce more fine detail but will take longer to calculate</param>
             <returns>Task object containing the Bitmap image</returns>
         </member>
+        <member name="T:FractalRenderer.BurningShip">
+            <summary>
+            IFractal implementation of the BurningShip Set
+            </summary>
+        </member>
+        <member name="M:FractalRenderer.BurningShip.#ctor(System.Double)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="maxValueExtent">Initialisation value for MaxValueExtent</param>
+        </member>
+        <member name="P:FractalRenderer.BurningShip.MaxValueExtent">
+            <inheritdoc/>
+        </member>
+        <member name="M:FractalRenderer.BurningShip.IterationCount(System.Numerics.Complex,System.Int32)">
+            <inheritdoc/>
+        </member>
         <member name="T:FractalRenderer.FractalColorType">
             <summary>
             Enumerated Type used to indicate the color scheme used when rendering Fractal Bitmap
@@ -69,6 +86,23 @@
             <param name="c">Complex C is the 'window' of coordinates in the iteration calculation</param>
             <param name="iterationLimit">Maximum number of calculations to attempt </param>
             <returns>The number of calculated iterations or the IterationLimit if there are too many</returns>
+        </member>
+        <member name="T:FractalRenderer.Magnet">
+            <summary>
+            IFractal implementation of the Magnet Set
+            </summary>
+        </member>
+        <member name="M:FractalRenderer.Magnet.#ctor(System.Double)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="maxValueExtent">Initialisation value for MaxValueExtent</param>
+        </member>
+        <member name="P:FractalRenderer.Magnet.MaxValueExtent">
+            <inheritdoc/>
+        </member>
+        <member name="M:FractalRenderer.Magnet.IterationCount(System.Numerics.Complex,System.Int32)">
+            <inheritdoc/>
         </member>
         <member name="T:FractalRenderer.Mandelbrot">
             <summary>
@@ -120,6 +154,23 @@
             <summary>
             The end coordinate of the Imaginary (y dimension) window
             </summary>
+        </member>
+        <member name="T:FractalRenderer.Tricorn">
+            <summary>
+            IFractal implementation of the Tricorn Set
+            </summary>
+        </member>
+        <member name="M:FractalRenderer.Tricorn.#ctor(System.Double)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="maxValueExtent">Initialisation value for MaxValueExtent</param>
+        </member>
+        <member name="P:FractalRenderer.Tricorn.MaxValueExtent">
+            <inheritdoc/>
+        </member>
+        <member name="M:FractalRenderer.Tricorn.IterationCount(System.Numerics.Complex,System.Int32)">
+            <inheritdoc/>
         </member>
     </members>
 </doc>

@@ -1,17 +1,18 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 
 namespace FractalRenderer
 {
     /// <summary>
-    /// IFractal implementation of the Mandelbrot Set
+    /// IFractal implementation of the BurningShip Set
     /// </summary>
-    public class Mandelbrot : IFractal
+    public class BurningShip : IFractal
     {
         /// <summary>
         /// Class constructor
         /// </summary>
         /// <param name="maxValueExtent">Initialisation value for MaxValueExtent</param>
-        public Mandelbrot(double maxValueExtent = 2d)
+        public BurningShip(double maxValueExtent = 2d)
         {
             MaxValueExtent = maxValueExtent;
         }
@@ -27,7 +28,8 @@ namespace FractalRenderer
 
             while (Complex.Abs(z) <= MaxValueExtent && n < iterationLimit)
             {
-                z = Complex.Pow(z, 2d) + c;
+                Complex t = new Complex(Math.Abs(z.Real), Math.Abs(z.Imaginary));
+                z = Complex.Pow(t, 2d) + c;
                 n++;
             }
 

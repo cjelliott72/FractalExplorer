@@ -48,7 +48,11 @@ namespace FractalRenderer
             int color;
             switch (ColorType)
             {
-                case FractalColorType.Color:
+                case FractalColorType.BlueScheme:
+                    hue = 255 - iteration * 255 / maxIterations;
+                    return GetColorFromHSV(hue, 1d, (iteration < maxIterations ? 1d : 0d));
+
+                case FractalColorType.RedScheme:
                     hue = 255 * iteration / maxIterations;
                     return GetColorFromHSV(hue, 1d, (iteration < maxIterations ? 1d : 0d));
 

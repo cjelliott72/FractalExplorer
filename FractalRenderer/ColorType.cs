@@ -10,8 +10,13 @@
         /// </summary>
         BlackAndWhite = 0,
         /// <summary>
-        /// Full Color scheme
+        /// Full Color scheme using Blue tones
         /// </summary>
-        Color
+        BlueScheme = 1,
+        /// <summary>
+        /// Full Color scheme using Red tones
+        /// </summary>
+        RedScheme = 2,
+
     }
 }

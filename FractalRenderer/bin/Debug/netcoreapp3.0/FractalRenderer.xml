@@ -64,9 +64,14 @@
             Black, White and Grey color scheme
             </summary>
         </member>
-        <member name="F:FractalRenderer.FractalColorType.Color">
+        <member name="F:FractalRenderer.FractalColorType.BlueScheme">
             <summary>
-            Full Color scheme
+            Full Color scheme using Blue tones
+            </summary>
+        </member>
+        <member name="F:FractalRenderer.FractalColorType.RedScheme">
+            <summary>
+            Full Color scheme using Red tones
             </summary>
         </member>
         <member name="T:FractalRenderer.IFractal">

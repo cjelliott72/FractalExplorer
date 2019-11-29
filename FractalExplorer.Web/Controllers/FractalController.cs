@@ -25,7 +25,7 @@ namespace FractalExplorer.Web.Controllers
         {
             _logger = logger;
             _fractal = new Mandelbrot(_maxValueExtent);
-            _renderer = new BitmapRenderer(_fractal, FractalColorType.Color);
+            _renderer = new BitmapRenderer(_fractal, FractalColorType.BlueScheme);
         }
 
         // GET: api/Fractal

@@ -18,12 +18,10 @@ namespace FractalRenderer
         /// </summary>
         /// <param name="fractal">Initialiser for Fractal property</param>
         /// <param name="colorType">Initialiser for ColorType property</param>
-        /// <param name="maxIterations">Initialiser for MaxIterations property</param>
-        public BitmapRenderer(IFractal fractal, FractalColorType colorType, int maxIterations)
+        public BitmapRenderer(IFractal fractal, FractalColorType colorType)
         {
             Fractal = fractal;
             ColorType = colorType;
-            MaxIterations = maxIterations;
         }
 
         #endregion
@@ -40,31 +38,23 @@ namespace FractalRenderer
         /// </summary>
         public FractalColorType ColorType { get; }
 
-        /// <summary>
-        /// The maximum number of iterations to be calculated for each pixel.
-        /// </summary>
-        /// <remarks>
-        /// Higher values will produce more fine detail but will take longer to calculate
-        /// </remarks>
-        public int MaxIterations { get; }
-
         #endregion
 
         #region Private Methods
 
-        private Color GetColor(int iteration)
+        private Color GetColor(int iteration, int maxIterations)
         {
             double hue;
             int color;
             switch (ColorType)
             {
                 case FractalColorType.Color:
-                    hue = 255 * iteration / MaxIterations;
-                    return GetColorFromHSV(hue, 1d, (iteration < MaxIterations ? 1d : 0d));
+                    hue = 255 * iteration / maxIterations;
+                    return GetColorFromHSV(hue, 1d, (iteration < maxIterations ? 1d : 0d));
 
                 case FractalColorType.BlackAndWhite:
                 default:
-                    hue = 255 - iteration * 255 / MaxIterations;
+                    hue = 255 - iteration * 255 / maxIterations;
                     color = (int)hue;
                     return Color.FromArgb(color, color, color);
             }
@@ -108,8 +98,9 @@ namespace FractalRenderer
         /// <param name="width">Width in pixels of the output Bitmap</param>
         /// <param name="pixelFormat">Specifies the System.Drawing.Imaging pixel format for Bitmap pixel colors</param>
         /// <param name="plotWindow">PlotWindow struct containing the real and imaginary coordinates the Fractal should be plotted against</param>
+        /// <param name="maxIterations">The maximum number of iterations to be calculated for each pixel. Higher values will produce more fine detail but will take longer to calculate</param>
         /// <returns>Task object containing the Bitmap image</returns>
-        public Task<Bitmap> Render(int height, int width, PixelFormat pixelFormat, PlotWindow plotWindow)
+        public Task<Bitmap> Render(int height, int width, PixelFormat pixelFormat, PlotWindow plotWindow, int maxIterations)
         {
             Bitmap bitmap = new Bitmap(height, width, pixelFormat);
             double xJump = (plotWindow.RealEnd - plotWindow.RealStart) / width;
@@ -122,8 +113,8 @@ namespace FractalRenderer
                 for (int y = 0; y < height; y++)
                 {
                     double cy = (yJump * y) - Math.Abs(plotWindow.ImagStart);
-                    int iteration = Fractal.IterationCount(new Complex(cx, cy), MaxIterations);
-                    bitmap.SetPixel(x, y, GetColor(iteration));
+                    int iteration = Fractal.IterationCount(new Complex(cx, cy), maxIterations);
+                    bitmap.SetPixel(x, y, GetColor(iteration, maxIterations));
                 }
             }
 

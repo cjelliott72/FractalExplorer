@@ -16,7 +16,6 @@ namespace FractalExplorer.Web.Controllers
         private readonly IFractal _fractal;
         private readonly BitmapRenderer _renderer;
         private const double _maxValueExtent = 2d;
-        private const int _maxIterations = 80;
 
         /// <summary>
         /// Class constructor
@@ -26,15 +25,15 @@ namespace FractalExplorer.Web.Controllers
         {
             _logger = logger;
             _fractal = new Mandelbrot(_maxValueExtent);
-            _renderer = new BitmapRenderer(_fractal, FractalColorType.Color, _maxIterations);
+            _renderer = new BitmapRenderer(_fractal, FractalColorType.Color);
         }
 
         // GET: api/Fractal
         [HttpGet]
-        public async Task<ActionResult<byte[]>> GetFractalImage(int height, int width, double realStart, double realEnd, double imagStart, double imagEnd)
+        public async Task<ActionResult<byte[]>> GetFractalImage(int height, int width, double realStart, double realEnd, double imagStart, double imagEnd, int maxIterations)
         {
             PlotWindow plotWindow = new PlotWindow(realStart, realEnd, imagStart, imagEnd);
-            Bitmap bitmap = await _renderer.Render(height, width, PixelFormat.Format24bppRgb, plotWindow);
+            Bitmap bitmap = await _renderer.Render(height, width, PixelFormat.Format24bppRgb, plotWindow, maxIterations);
 
             using (MemoryStream memoryStream = new MemoryStream())
             {

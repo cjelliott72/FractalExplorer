@@ -13,9 +13,9 @@ export class FractalService {
     private http: HttpClient,
     @Inject('BASE_URL') private baseUrl: string) { }
 
-  getFractalImage(height: number, width: number, xMin: number, xMax: number, yMin: number, yMax: number): Observable<Blob> {
+  getFractalImage(height: number, width: number, xMin: number, xMax: number, yMin: number, yMax: number, maxIterations: number): Observable<Blob> {
     return this.http.get<Blob>(this.baseUrl + 'api/fractal/' +
-      `?height=${height}&width=${width}&realStart=${xMin}&realEnd=${xMax}&imagStart=${yMin}&imagEnd=${yMax}`)
+      `?height=${height}&width=${width}&realStart=${xMin}&realEnd=${xMax}&imagStart=${yMin}&imagEnd=${yMax}&maxIterations=${maxIterations}`)
       .pipe(
         catchError(this.handleError<Blob>('getFractalImage'))
       );

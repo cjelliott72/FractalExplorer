@@ -9,13 +9,12 @@
             This class renders the Fractal view in Bitmap format
             </summary>
         </member>
-        <member name="M:FractalRenderer.BitmapRenderer.#ctor(FractalRenderer.IFractal,FractalRenderer.FractalColorType,System.Int32)">
+        <member name="M:FractalRenderer.BitmapRenderer.#ctor(FractalRenderer.IFractal,FractalRenderer.FractalColorType)">
             <summary>
             Class constructor
             </summary>
             <param name="fractal">Initialiser for Fractal property</param>
             <param name="colorType">Initialiser for ColorType property</param>
-            <param name="maxIterations">Initialiser for MaxIterations property</param>
         </member>
         <member name="P:FractalRenderer.BitmapRenderer.Fractal">
             <summary>
@@ -27,15 +26,7 @@
             The color scheme to be used in the Bitmap
             </summary>
         </member>
-        <member name="P:FractalRenderer.BitmapRenderer.MaxIterations">
-            <summary>
-            The maximum number of iterations to be calculated for each pixel.
-            </summary>
-            <remarks>
-            Higher values will produce more fine detail but will take longer to calculate
-            </remarks>
-        </member>
-        <member name="M:FractalRenderer.BitmapRenderer.Render(System.Int32,System.Int32,System.Drawing.Imaging.PixelFormat,FractalRenderer.PlotWindow)">
+        <member name="M:FractalRenderer.BitmapRenderer.Render(System.Int32,System.Int32,System.Drawing.Imaging.PixelFormat,FractalRenderer.PlotWindow,System.Int32)">
             <summary>
             This asynchronous method will render the Fractal Bitmap using the coordinates provided in the PlotWindow struct
             </summary>
@@ -43,6 +34,7 @@
             <param name="width">Width in pixels of the output Bitmap</param>
             <param name="pixelFormat">Specifies the System.Drawing.Imaging pixel format for Bitmap pixel colors</param>
             <param name="plotWindow">PlotWindow struct containing the real and imaginary coordinates the Fractal should be plotted against</param>
+            <param name="maxIterations">The maximum number of iterations to be calculated for each pixel. Higher values will produce more fine detail but will take longer to calculate</param>
             <returns>Task object containing the Bitmap image</returns>
         </member>
         <member name="T:FractalRenderer.FractalColorType">

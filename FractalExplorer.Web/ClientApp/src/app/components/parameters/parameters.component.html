@@ -36,6 +36,27 @@
     </mat-form-field>
   </div>
   <div>
+    <mat-form-field hideRequiredMarker>
+      <mat-select required formControlName="colorType">
+        <mat-option value="0">Black & White</mat-option>
+        <mat-option value="1">Blue Scheme</mat-option>
+        <mat-option value="2">Red Scheme</mat-option>
+      </mat-select>
+      <mat-label>Color Type</mat-label>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field hideRequiredMarker>
+      <mat-select required formControlName="fractalType">
+        <mat-option value="0">Mandelbrot</mat-option>
+        <mat-option value="1">Tricorn</mat-option>
+        <mat-option value="2">BurningShip</mat-option>
+        <mat-option value="3">Magnet</mat-option>
+      </mat-select>
+      <mat-label>Fractal Set</mat-label>
+    </mat-form-field>
+  </div>
+  <div>
     <button type="submit" mat-stroked-button color="primary" [disabled]="!parametersForm.valid">Submit</button>
     <button (click)="resetFormData()" mat-stroked-button [disabled]="parametersForm.pristine">Reset</button>
   </div>

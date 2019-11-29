@@ -11,42 +11,13 @@ namespace FractalRenderer
     /// </summary>
     public class BitmapRenderer
     {
-        #region Constructors
-
-        /// <summary>
-        /// Class constructor
-        /// </summary>
-        /// <param name="fractal">Initialiser for Fractal property</param>
-        /// <param name="colorType">Initialiser for ColorType property</param>
-        public BitmapRenderer(IFractal fractal, FractalColorType colorType)
-        {
-            Fractal = fractal;
-            ColorType = colorType;
-        }
-
-        #endregion
-
-        #region Properties
-
-        /// <summary>
-        /// An instance of IFractal to be rendered
-        /// </summary>
-        public IFractal Fractal { get; }
-
-        /// <summary>
-        /// The color scheme to be used in the Bitmap
-        /// </summary>
-        public FractalColorType ColorType { get; }
-
-        #endregion
-
         #region Private Methods
 
-        private Color GetColor(int iteration, int maxIterations)
+        private Color GetColor(int iteration, int maxIterations, FractalColorType colorType)
         {
             double hue;
             int color;
-            switch (ColorType)
+            switch (colorType)
             {
                 case FractalColorType.BlueScheme:
                     hue = 255 - iteration * 255 / maxIterations;
@@ -68,26 +39,36 @@ namespace FractalRenderer
         {
             int hi = (int)Math.Floor(hue / 60) % 6;
             double f = hue / 60 - Math.Floor(hue / 60);
-            value = value * 255;
+            value *= 255;
             int v = (int)value;
             int p = (int)(value * (1 - saturation));
             int q = (int)(value * (1 - f * saturation));
             int t = (int)(value * (1 - (1 - f) * saturation));
 
-            switch (hi)
+            return hi switch
             {
-                case 0:
-                    return Color.FromArgb(255, v, t, p);
-                case 1:
-                    return Color.FromArgb(255, q, v, p);
-                case 2:
-                    return Color.FromArgb(255, p, v, t);
-                case 3:
-                    return Color.FromArgb(255, p, q, v);
-                case 4:
-                    return Color.FromArgb(255, t, p, v);
+                0 => Color.FromArgb(255, v, t, p),
+                1 => Color.FromArgb(255, q, v, p),
+                2 => Color.FromArgb(255, p, v, t),
+                3 => Color.FromArgb(255, p, q, v),
+                4 => Color.FromArgb(255, t, p, v),
+                _ => Color.FromArgb(255, v, p, q),
+            };
+        }
+
+        private IFractal GetFractal(FractalSetType fractalType)
+        {
+            switch(fractalType)
+            {
+                case FractalSetType.BurningShip:
+                    return new BurningShip();
+                case FractalSetType.Magnet:
+                    return new Magnet();
+                case FractalSetType.Tricorn:
+                    return new Tricorn();
+                case FractalSetType.Mandelbrot:
                 default:
-                    return Color.FromArgb(255, v, p, q);
+                    return new Mandelbrot();
             }
         }
 
@@ -103,12 +84,15 @@ namespace FractalRenderer
         /// <param name="pixelFormat">Specifies the System.Drawing.Imaging pixel format for Bitmap pixel colors</param>
         /// <param name="plotWindow">PlotWindow struct containing the real and imaginary coordinates the Fractal should be plotted against</param>
         /// <param name="maxIterations">The maximum number of iterations to be calculated for each pixel. Higher values will produce more fine detail but will take longer to calculate</param>
+        /// <param name="colorType">FractalColorType to be used in generated image</param>
+        /// <param name="fractalType">Fractal formula to be used in calculated image</param>
         /// <returns>Task object containing the Bitmap image</returns>
-        public Task<Bitmap> Render(int height, int width, PixelFormat pixelFormat, PlotWindow plotWindow, int maxIterations)
+        public Task<Bitmap> Render(int height, int width, PixelFormat pixelFormat, PlotWindow plotWindow, int maxIterations, FractalColorType colorType, FractalSetType fractalType)
         {
             Bitmap bitmap = new Bitmap(height, width, pixelFormat);
             double xJump = (plotWindow.RealEnd - plotWindow.RealStart) / width;
             double yJump = (plotWindow.ImagEnd - plotWindow.ImagStart) / height;
+            IFractal fractal = GetFractal(fractalType);
 
             for (int x = 0; x < width; x++)
             {
@@ -117,12 +101,12 @@ namespace FractalRenderer
                 for (int y = 0; y < height; y++)
                 {
                     double cy = (yJump * y) - Math.Abs(plotWindow.ImagStart);
-                    int iteration = Fractal.IterationCount(new Complex(cx, cy), maxIterations);
-                    bitmap.SetPixel(x, y, GetColor(iteration, maxIterations));
+                    int iteration = fractal.IterationCount(new Complex(cx, cy), maxIterations);
+                    bitmap.SetPixel(x, y, GetColor(iteration, maxIterations, colorType));
                 }
             }
 
-            return Task.FromResult<Bitmap>(bitmap);
+            return Task.FromResult(bitmap);
         }
 
         #endregion

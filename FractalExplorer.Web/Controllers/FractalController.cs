@@ -13,9 +13,7 @@ namespace FractalExplorer.Web.Controllers
     public class FractalController : ControllerBase
     {
         private readonly ILogger<FractalController> _logger;
-        private readonly IFractal _fractal;
         private readonly BitmapRenderer _renderer;
-        private const double _maxValueExtent = 2d;
 
         /// <summary>
         /// Class constructor
@@ -24,22 +22,22 @@ namespace FractalExplorer.Web.Controllers
         public FractalController(ILogger<FractalController> logger)
         {
             _logger = logger;
-            _fractal = new Mandelbrot(_maxValueExtent);
-            _renderer = new BitmapRenderer(_fractal, FractalColorType.BlueScheme);
+            _renderer = new BitmapRenderer();
         }
 
         // GET: api/Fractal
         [HttpGet]
-        public async Task<ActionResult<byte[]>> GetFractalImage(int height, int width, double realStart, double realEnd, double imagStart, double imagEnd, int maxIterations)
+        public async Task<ActionResult<byte[]>> GetFractalImage(
+            int height, int width,
+            double realStart, double realEnd, double imagStart, double imagEnd,
+            int maxIterations, FractalColorType colorType, FractalSetType fractalType)
         {
             PlotWindow plotWindow = new PlotWindow(realStart, realEnd, imagStart, imagEnd);
-            Bitmap bitmap = await _renderer.Render(height, width, PixelFormat.Format24bppRgb, plotWindow, maxIterations);
+            Bitmap bitmap = await _renderer.Render(height, width, PixelFormat.Format24bppRgb, plotWindow, maxIterations, colorType, fractalType);
 
-            using (MemoryStream memoryStream = new MemoryStream())
-            {
-                bitmap.Save(memoryStream, ImageFormat.Jpeg);
-                return memoryStream.ToArray();
-            }
+            using MemoryStream memoryStream = new MemoryStream();
+            bitmap.Save(memoryStream, ImageFormat.Jpeg);
+            return memoryStream.ToArray();
         }
     }
 }

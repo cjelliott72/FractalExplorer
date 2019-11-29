@@ -32,7 +32,9 @@ export class ParametersComponent implements OnInit {
         yMinimum: ['-2', Validators.required],
         yMaximum: ['2', Validators.required]
       }, { validators: MinimumLessThanMaximumValidator('yMinimum', 'yMaximum') }),
-      maxIterations: ['80', [ Validators.required, Validators.min(1)]]
+      maxIterations: ['80', [Validators.required, Validators.min(1)]],
+      colorType: ['1', Validators.required],
+      fractalType: ['0', Validators.required]
     });
 
     this.originalData = this.parametersForm.value;
@@ -43,7 +45,8 @@ export class ParametersComponent implements OnInit {
     this.fractalService.getFractalImage(this.imageHeight, this.imageWidth,
       this.parametersForm.get("xGroup.xMinimum").value, this.parametersForm.get("xGroup.xMaximum").value,
       this.parametersForm.get("yGroup.yMinimum").value, this.parametersForm.get("yGroup.yMaximum").value,
-      this.parametersForm.get("maxIterations").value)
+      this.parametersForm.get("maxIterations").value, this.parametersForm.get("colorType").value,
+      this.parametersForm.get("fractalType").value)
       .subscribe((blob: any) => {
         let objectURL = 'data:image/jpeg;base64,' + blob;
         this.imageToShow = this.sanitizer.bypassSecurityTrustUrl(objectURL);

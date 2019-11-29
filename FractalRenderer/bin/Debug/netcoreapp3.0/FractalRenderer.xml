@@ -9,24 +9,7 @@
             This class renders the Fractal view in Bitmap format
             </summary>
         </member>
-        <member name="M:FractalRenderer.BitmapRenderer.#ctor(FractalRenderer.IFractal,FractalRenderer.FractalColorType)">
-            <summary>
-            Class constructor
-            </summary>
-            <param name="fractal">Initialiser for Fractal property</param>
-            <param name="colorType">Initialiser for ColorType property</param>
-        </member>
-        <member name="P:FractalRenderer.BitmapRenderer.Fractal">
-            <summary>
-            An instance of IFractal to be rendered
-            </summary>
-        </member>
-        <member name="P:FractalRenderer.BitmapRenderer.ColorType">
-            <summary>
-            The color scheme to be used in the Bitmap
-            </summary>
-        </member>
-        <member name="M:FractalRenderer.BitmapRenderer.Render(System.Int32,System.Int32,System.Drawing.Imaging.PixelFormat,FractalRenderer.PlotWindow,System.Int32)">
+        <member name="M:FractalRenderer.BitmapRenderer.Render(System.Int32,System.Int32,System.Drawing.Imaging.PixelFormat,FractalRenderer.PlotWindow,System.Int32,FractalRenderer.FractalColorType,FractalRenderer.FractalSetType)">
             <summary>
             This asynchronous method will render the Fractal Bitmap using the coordinates provided in the PlotWindow struct
             </summary>
@@ -35,6 +18,8 @@
             <param name="pixelFormat">Specifies the System.Drawing.Imaging pixel format for Bitmap pixel colors</param>
             <param name="plotWindow">PlotWindow struct containing the real and imaginary coordinates the Fractal should be plotted against</param>
             <param name="maxIterations">The maximum number of iterations to be calculated for each pixel. Higher values will produce more fine detail but will take longer to calculate</param>
+            <param name="colorType">FractalColorType to be used in generated image</param>
+            <param name="fractalType">Fractal formula to be used in calculated image</param>
             <returns>Task object containing the Bitmap image</returns>
         </member>
         <member name="T:FractalRenderer.BurningShip">
@@ -72,6 +57,31 @@
         <member name="F:FractalRenderer.FractalColorType.RedScheme">
             <summary>
             Full Color scheme using Red tones
+            </summary>
+        </member>
+        <member name="T:FractalRenderer.FractalSetType">
+            <summary>
+            Enumerated Type used to indicate the Fractal formula to be used
+            </summary>
+        </member>
+        <member name="F:FractalRenderer.FractalSetType.Mandelbrot">
+            <summary>
+            Mandelbrot set
+            </summary>
+        </member>
+        <member name="F:FractalRenderer.FractalSetType.Tricorn">
+            <summary>
+            Tricorn Set
+            </summary>
+        </member>
+        <member name="F:FractalRenderer.FractalSetType.BurningShip">
+            <summary>
+            BurningShip Set
+            </summary>
+        </member>
+        <member name="F:FractalRenderer.FractalSetType.Magnet">
+            <summary>
+            Magnet Set
             </summary>
         </member>
         <member name="T:FractalRenderer.IFractal">

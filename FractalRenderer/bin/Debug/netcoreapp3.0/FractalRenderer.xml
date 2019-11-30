@@ -4,41 +4,6 @@
         <name>FractalRenderer</name>
     </assembly>
     <members>
-        <member name="T:FractalRenderer.BitmapRenderer">
-            <summary>
-            This class renders the Fractal view in Bitmap format
-            </summary>
-        </member>
-        <member name="M:FractalRenderer.BitmapRenderer.Render(System.Int32,System.Int32,System.Drawing.Imaging.PixelFormat,FractalRenderer.PlotWindow,System.Int32,FractalRenderer.FractalColorType,FractalRenderer.FractalSetType)">
-            <summary>
-            This asynchronous method will render the Fractal Bitmap using the coordinates provided in the PlotWindow struct
-            </summary>
-            <param name="height">Height in pixels of the output Bitmap</param>
-            <param name="width">Width in pixels of the output Bitmap</param>
-            <param name="pixelFormat">Specifies the System.Drawing.Imaging pixel format for Bitmap pixel colors</param>
-            <param name="plotWindow">PlotWindow struct containing the real and imaginary coordinates the Fractal should be plotted against</param>
-            <param name="maxIterations">The maximum number of iterations to be calculated for each pixel. Higher values will produce more fine detail but will take longer to calculate</param>
-            <param name="colorType">FractalColorType to be used in generated image</param>
-            <param name="fractalType">Fractal formula to be used in calculated image</param>
-            <returns>Task object containing the Bitmap image</returns>
-        </member>
-        <member name="T:FractalRenderer.BurningShip">
-            <summary>
-            IFractal implementation of the BurningShip Set
-            </summary>
-        </member>
-        <member name="M:FractalRenderer.BurningShip.#ctor(System.Double)">
-            <summary>
-            Class constructor
-            </summary>
-            <param name="maxValueExtent">Initialisation value for MaxValueExtent</param>
-        </member>
-        <member name="P:FractalRenderer.BurningShip.MaxValueExtent">
-            <inheritdoc/>
-        </member>
-        <member name="M:FractalRenderer.BurningShip.IterationCount(System.Numerics.Complex,System.Int32)">
-            <inheritdoc/>
-        </member>
         <member name="T:FractalRenderer.FractalColorType">
             <summary>
             Enumerated Type used to indicate the color scheme used when rendering Fractal Bitmap
@@ -59,82 +24,151 @@
             Full Color scheme using Red tones
             </summary>
         </member>
-        <member name="T:FractalRenderer.FractalSetType">
+        <member name="T:FractalRenderer.Fractals.BurningShip">
             <summary>
-            Enumerated Type used to indicate the Fractal formula to be used
+            BurningShip fractal
             </summary>
         </member>
-        <member name="F:FractalRenderer.FractalSetType.Mandelbrot">
+        <member name="M:FractalRenderer.Fractals.BurningShip.IterationCount(System.Numerics.Complex,System.Numerics.Complex,System.Double,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="T:FractalRenderer.Fractals.Magnet">
             <summary>
-            Mandelbrot set
+            Magnet fractal
             </summary>
         </member>
-        <member name="F:FractalRenderer.FractalSetType.Tricorn">
+        <member name="M:FractalRenderer.Fractals.Magnet.IterationCount(System.Numerics.Complex,System.Numerics.Complex,System.Double,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="T:FractalRenderer.Fractals.Mandelbrot">
             <summary>
-            Tricorn Set
+            Mandelbrot fractal
             </summary>
         </member>
-        <member name="F:FractalRenderer.FractalSetType.BurningShip">
+        <member name="M:FractalRenderer.Fractals.Mandelbrot.IterationCount(System.Numerics.Complex,System.Numerics.Complex,System.Double,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="T:FractalRenderer.Fractals.Tricorn">
             <summary>
-            BurningShip Set
+            Tricorn Fractal
             </summary>
         </member>
-        <member name="F:FractalRenderer.FractalSetType.Magnet">
-            <summary>
-            Magnet Set
-            </summary>
+        <member name="M:FractalRenderer.Fractals.Tricorn.IterationCount(System.Numerics.Complex,System.Numerics.Complex,System.Double,System.Int32)">
+            <inheritdoc/>
         </member>
         <member name="T:FractalRenderer.IFractal">
             <summary>
-            Interface for Fractal definition classes
+            Interface for Fractal classes
             </summary>
         </member>
-        <member name="P:FractalRenderer.IFractal.MaxValueExtent">
+        <member name="M:FractalRenderer.IFractal.IterationCount(System.Numerics.Complex,System.Numerics.Complex,System.Double,System.Int32)">
             <summary>
-            The upper limit of Complex Z, beyond which the value trends towards infinity
+            Returns the number of calculated iterations below the maxValueExtent, or the maxIterations if there are too many
             </summary>
+            <param name="z">Complex term z in the fractal function z =  z^2 + c</param>
+            <param name="c">Complex term c in the fractal function z =  z^2 + c</param>
+            <param name="maxValueExtent">The upper limit of Abs(Complex Z), beyond which the value trends towards infinity</param>
+            <param name="maxIterations">The break-out value, at this number of iterations no further calculations are performed</param>
+            <returns>The number of calculated iterations or the MaxIterations if there are too many</returns>
         </member>
-        <member name="M:FractalRenderer.IFractal.IterationCount(System.Numerics.Complex,System.Int32)">
+        <member name="T:FractalRenderer.IFractalRenderer">
             <summary>
-            Returns the number of calculated iterations below the MaxValueExtent, or the IterationLimit if there are too many
+            Interface for Fractal Rendering Classes
             </summary>
-            <param name="c">Complex C is the 'window' of coordinates in the iteration calculation</param>
-            <param name="iterationLimit">Maximum number of calculations to attempt </param>
-            <returns>The number of calculated iterations or the IterationLimit if there are too many</returns>
         </member>
-        <member name="T:FractalRenderer.Magnet">
+        <member name="M:FractalRenderer.IFractalRenderer.Render(FractalRenderer.ParametersDto,FractalRenderer.IFractal)">
             <summary>
-            IFractal implementation of the Magnet Set
+            This Asynchronous method returns a Fractal Bitmap generated from the provided parameters
             </summary>
+            <param name="parameters">ParametersDto</param>
+            <param name="fractal">IFractal instance</param>
+            <returns>Bitmap</returns>
         </member>
-        <member name="M:FractalRenderer.Magnet.#ctor(System.Double)">
+        <member name="T:FractalRenderer.MandelbrotRenderer">
             <summary>
-            Class constructor
+            This class renders fractals of the Mandelbrot set
             </summary>
-            <param name="maxValueExtent">Initialisation value for MaxValueExtent</param>
         </member>
-        <member name="P:FractalRenderer.Magnet.MaxValueExtent">
+        <member name="M:FractalRenderer.MandelbrotRenderer.Render(FractalRenderer.ParametersDto,FractalRenderer.IFractal)">
             <inheritdoc/>
         </member>
-        <member name="M:FractalRenderer.Magnet.IterationCount(System.Numerics.Complex,System.Int32)">
-            <inheritdoc/>
-        </member>
-        <member name="T:FractalRenderer.Mandelbrot">
+        <member name="T:FractalRenderer.PaletteHelper">
             <summary>
-            IFractal implementation of the Mandelbrot Set
+            Common helper methods for calculating or converting pixel colors
             </summary>
         </member>
-        <member name="M:FractalRenderer.Mandelbrot.#ctor(System.Double)">
+        <member name="M:FractalRenderer.PaletteHelper.GetColor(System.Int32,System.Int32,FractalRenderer.FractalColorType)">
             <summary>
-            Class constructor
+            Gets the fractal pixel color for a given iteration
             </summary>
-            <param name="maxValueExtent">Initialisation value for MaxValueExtent</param>
+            <param name="iteration">Current fractal Iteration</param>
+            <param name="maxIterations">Maximum Iterations</param>
+            <param name="colorType">FractalColorType</param>
+            <returns>Color</returns>
         </member>
-        <member name="P:FractalRenderer.Mandelbrot.MaxValueExtent">
-            <inheritdoc/>
+        <member name="M:FractalRenderer.PaletteHelper.GetColorFromHSV(System.Double,System.Double,System.Double)">
+            <summary>
+            Returns a RGB Color for the given HSV parameters
+            </summary>
+            <param name="hue">Hue</param>
+            <param name="saturation">Saturation</param>
+            <param name="value">Value</param>
+            <returns>Color</returns>
         </member>
-        <member name="M:FractalRenderer.Mandelbrot.IterationCount(System.Numerics.Complex,System.Int32)">
-            <inheritdoc/>
+        <member name="T:FractalRenderer.ParametersDto">
+            <summary>
+            This Dto class contains the required parameters for generating a Fractal image
+            </summary>
+        </member>
+        <member name="P:FractalRenderer.ParametersDto.Height">
+            <summary>
+            Height in pixels of the output Bitmap
+            </summary>
+        </member>
+        <member name="P:FractalRenderer.ParametersDto.Width">
+            <summary>
+            Width in pixels of the output Bitmap
+            </summary>
+        </member>
+        <member name="P:FractalRenderer.ParametersDto.xMinimum">
+            <summary>
+            Minimum (leftmost) coordinate of the x-axis to be plotted
+            </summary>
+        </member>
+        <member name="P:FractalRenderer.ParametersDto.xMaximum">
+            <summary>
+            Maximum (rightmost) coordinate of the x-axis to be plotted
+            </summary>
+        </member>
+        <member name="P:FractalRenderer.ParametersDto.yMinimum">
+            <summary>
+            Minimum (topmost) coordinate of the y-axis to be plotted
+            </summary>
+        </member>
+        <member name="P:FractalRenderer.ParametersDto.yMaximum">
+            <summary>
+            Maximum (bottommost) coordinate of the y-axis to be plotted
+            </summary>
+        </member>
+        <member name="P:FractalRenderer.ParametersDto.MaxIterations">
+            <summary>
+            The break-out value, at this number of iterations no further calculations are performed
+            </summary>
+        </member>
+        <member name="P:FractalRenderer.ParametersDto.MaxValueExtent">
+            <summary>
+            The upper limit of Abs(Complex Z), beyond which the value trends towards infinity
+            </summary>
+        </member>
+        <member name="P:FractalRenderer.ParametersDto.ColorType">
+            <summary>
+            FractalColorType to be used in generated image
+            </summary>
+        </member>
+        <member name="P:FractalRenderer.ParametersDto.FractalName">
+            <summary>
+            Name of the Fractal to be rendered
+            </summary>
         </member>
         <member name="T:FractalRenderer.PlotWindow">
             <summary>
@@ -169,23 +203,6 @@
             <summary>
             The end coordinate of the Imaginary (y dimension) window
             </summary>
-        </member>
-        <member name="T:FractalRenderer.Tricorn">
-            <summary>
-            IFractal implementation of the Tricorn Set
-            </summary>
-        </member>
-        <member name="M:FractalRenderer.Tricorn.#ctor(System.Double)">
-            <summary>
-            Class constructor
-            </summary>
-            <param name="maxValueExtent">Initialisation value for MaxValueExtent</param>
-        </member>
-        <member name="P:FractalRenderer.Tricorn.MaxValueExtent">
-            <inheritdoc/>
-        </member>
-        <member name="M:FractalRenderer.Tricorn.IterationCount(System.Numerics.Complex,System.Int32)">
-            <inheritdoc/>
         </member>
     </members>
 </doc>

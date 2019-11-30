@@ -45,8 +45,7 @@ export class ParametersComponent implements OnInit {
     this.fractalService.getFractalImage(this.imageHeight, this.imageWidth,
       this.parametersForm.get("xGroup.xMinimum").value, this.parametersForm.get("xGroup.xMaximum").value,
       this.parametersForm.get("yGroup.yMinimum").value, this.parametersForm.get("yGroup.yMaximum").value,
-      this.parametersForm.get("maxIterations").value, this.parametersForm.get("colorType").value,
-      this.parametersForm.get("fractalType").value)
+      this.parametersForm.get("maxIterations").value, this.parametersForm.get("colorType").value, 'Mandelbrot')
       .subscribe((blob: any) => {
         let objectURL = 'data:image/jpeg;base64,' + blob;
         this.imageToShow = this.sanitizer.bypassSecurityTrustUrl(objectURL);

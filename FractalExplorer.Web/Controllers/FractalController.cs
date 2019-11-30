@@ -1,9 +1,8 @@
-﻿using FractalRenderer;
+﻿using FractalExplorer.Web.Services;
+using FractalRenderer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
+using System;
 using System.Threading.Tasks;
 
 namespace FractalExplorer.Web.Controllers
@@ -13,7 +12,7 @@ namespace FractalExplorer.Web.Controllers
     public class FractalController : ControllerBase
     {
         private readonly ILogger<FractalController> _logger;
-        private readonly BitmapRenderer _renderer;
+        private readonly FractalService fractalService;
 
         /// <summary>
         /// Class constructor
@@ -22,22 +21,37 @@ namespace FractalExplorer.Web.Controllers
         public FractalController(ILogger<FractalController> logger)
         {
             _logger = logger;
-            _renderer = new BitmapRenderer();
+            fractalService = new FractalService();
         }
 
         // GET: api/Fractal
         [HttpGet]
         public async Task<ActionResult<byte[]>> GetFractalImage(
-            int height, int width,
-            double realStart, double realEnd, double imagStart, double imagEnd,
-            int maxIterations, FractalColorType colorType, FractalSetType fractalType)
+            int height, int width, double realStart, double realEnd, double imagStart, double imagEnd,
+            int maxIterations, FractalColorType colorType, string fractalName)
         {
-            PlotWindow plotWindow = new PlotWindow(realStart, realEnd, imagStart, imagEnd);
-            Bitmap bitmap = await _renderer.Render(height, width, PixelFormat.Format24bppRgb, plotWindow, maxIterations, colorType, fractalType);
-
-            using MemoryStream memoryStream = new MemoryStream();
-            bitmap.Save(memoryStream, ImageFormat.Jpeg);
-            return memoryStream.ToArray();
+            try
+            {
+                ParametersDto parameters = new ParametersDto
+                {
+                    Height = height,
+                    Width = width,
+                    xMinimum = realStart,
+                    xMaximum = realEnd,
+                    yMinimum = imagStart,
+                    yMaximum = imagEnd,
+                    MaxIterations = maxIterations,
+                    ColorType = colorType,
+                    FractalName = fractalName,
+                    MaxValueExtent = 2d
+                };
+                return await fractalService.GetFractalByteArray(parameters);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return BadRequest(ex);
+            }
         }
     }
 }

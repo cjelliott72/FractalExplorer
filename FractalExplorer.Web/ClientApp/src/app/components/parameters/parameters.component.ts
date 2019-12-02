@@ -10,9 +10,10 @@ import { ErrorStateMatcher } from '@angular/material/core';
 })
 export class ParametersComponent implements OnInit {
   imageToShow: any;
-  isImageLoading: any;
+  isImageLoading: boolean = true;
   imageWidth: number = 600;
   imageHeight: number = 600;
+  fractalList: string[];
   parametersForm: FormGroup;
   errorMatcher = new CrossFieldErrorMatcher();
   originalData: any;
@@ -23,6 +24,12 @@ export class ParametersComponent implements OnInit {
     private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    this.fractalService.getFractalList().subscribe((fractals: string[]) => {
+      this.fractalList = fractals;
+    }, error => {
+      console.log(error);
+    });
+
     this.parametersForm = this.fb.group({
       xGroup: this.fb.group({
         xMinimum: ['-2', Validators.required],
@@ -34,7 +41,7 @@ export class ParametersComponent implements OnInit {
       }, { validators: MinimumLessThanMaximumValidator('yMinimum', 'yMaximum') }),
       maxIterations: ['80', [Validators.required, Validators.min(1)]],
       colorType: ['1', Validators.required],
-      fractalType: ['0', Validators.required]
+      fractalName: ['', Validators.required]
     });
 
     this.originalData = this.parametersForm.value;
@@ -45,7 +52,8 @@ export class ParametersComponent implements OnInit {
     this.fractalService.getFractalImage(this.imageHeight, this.imageWidth,
       this.parametersForm.get("xGroup.xMinimum").value, this.parametersForm.get("xGroup.xMaximum").value,
       this.parametersForm.get("yGroup.yMinimum").value, this.parametersForm.get("yGroup.yMaximum").value,
-      this.parametersForm.get("maxIterations").value, this.parametersForm.get("colorType").value, 'Mandelbrot')
+      this.parametersForm.get("maxIterations").value, this.parametersForm.get("colorType").value,
+      this.parametersForm.get("fractalName").value)
       .subscribe((blob: any) => {
         let objectURL = 'data:image/jpeg;base64,' + blob;
         this.imageToShow = this.sanitizer.bypassSecurityTrustUrl(objectURL);

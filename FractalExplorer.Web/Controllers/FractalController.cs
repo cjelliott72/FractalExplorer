@@ -24,7 +24,14 @@ namespace FractalExplorer.Web.Controllers
             fractalService = new FractalService();
         }
 
-        // GET: api/Fractal
+        // GET: api/fractal/list
+        [HttpGet("list")]
+        public ActionResult<string[]> GetFractalList()
+        {
+            return fractalService.GetFractalList();
+        }
+
+        // GET: api/Fractal/
         [HttpGet]
         public async Task<ActionResult<byte[]>> GetFractalImage(
             int height, int width, double realStart, double realEnd, double imagStart, double imagEnd,

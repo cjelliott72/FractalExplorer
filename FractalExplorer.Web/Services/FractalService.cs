@@ -90,12 +90,14 @@ namespace FractalExplorer.Web.Services
         }
 
         /// <summary>
-        /// Returns a list of the registered Fractals
+        /// Returns a string array of the registered Fractals
         /// </summary>
-        /// <returns>List of type string</returns>
-        public List<string> GetFractalList()
+        /// <returns>string[]</returns>
+        public string[] GetFractalList()
         {
-            return new List<string>(fractalDictionary.Keys);
+            string[] keys = new string[fractalDictionary.Keys.Count];
+            fractalDictionary.Keys.CopyTo(keys, 0);
+            return keys;
         }
 
         #endregion

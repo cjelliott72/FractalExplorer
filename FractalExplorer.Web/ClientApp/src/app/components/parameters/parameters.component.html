@@ -47,13 +47,13 @@
   </div>
   <div>
     <mat-form-field hideRequiredMarker>
-      <mat-select required formControlName="fractalType">
-        <mat-option value="0">Mandelbrot</mat-option>
-        <mat-option value="1">Tricorn</mat-option>
-        <mat-option value="2">BurningShip</mat-option>
-        <mat-option value="3">Magnet</mat-option>
+      <mat-select required formControlName="fractalName" placeholder="Select Fractal">
+        <mat-option *ngFor="let fractal of this.fractalList" [value]="fractal">
+          {{fractal}}
+        </mat-option>
       </mat-select>
-      <mat-label>Fractal Set</mat-label>
+      <mat-error *ngIf="parametersForm.get('fractalName').hasError('required')">Value is required</mat-error>
+      <mat-label>Select Fractal</mat-label>
     </mat-form-field>
   </div>
   <div>
@@ -66,6 +66,6 @@
        alt="Place image title"
        *ngIf="!isImageLoading; else noImageFound">
   <ng-template #noImageFound>
-    <img src="fallbackImage.png" alt="Fallbackimage">
+    <div></div>
   </ng-template>
 </div>

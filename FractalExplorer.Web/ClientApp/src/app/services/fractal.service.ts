@@ -20,6 +20,13 @@ export class FractalService {
       );
   }
 
+  getFractalList() {
+    return this.http.get<string[]>(this.baseUrl + 'api/fractal/list')
+      .pipe(
+        catchError(this.handleError<Blob>('getFractalList'))
+      );
+  }
+
   /*
 * Handle Http operation that failed.
 * Let the app continue.

@@ -1,4 +1,19 @@
 <form [formGroup]="parametersForm" (ngSubmit)="onSubmit()" class="parameters">
+  <h3>Fractal Parameters</h3>
+  <div formGroupName="imageSize">
+    <mat-form-field appearance="standard">
+      <mat-label>Image Height</mat-label>
+      <input type="number" matInput placeholder="Height (pixels)" formControlName="height" step="1" min="100">
+      <mat-error *ngIf="parametersForm.get('imageSize.height').hasError('required')">Value is required</mat-error>
+      <mat-error *ngIf="parametersForm.get('imageSize.height').hasError('min')">Value must be 100 or higher</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Image Width</mat-label>
+      <input type="number" matInput placeholder="Width (pixels)" formControlName="width" step="1" min="100">
+      <mat-error *ngIf="parametersForm.get('imageSize.width').hasError('required')">Value is required</mat-error>
+      <mat-error *ngIf="parametersForm.get('imageSize.width').hasError('min')">Value must be 100 or higher</mat-error>
+    </mat-form-field>
+  </div>
   <div formGroupName="xGroup">
     <mat-form-field appearance="standard">
       <mat-label>x Axis Minimum</mat-label>

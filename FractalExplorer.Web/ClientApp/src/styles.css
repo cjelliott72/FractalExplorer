@@ -3,7 +3,7 @@
 
 html, body {
   height: 100%;
-  background-color: black;
+  background-color: slategrey;
 }
 
 body {
@@ -12,14 +12,22 @@ body {
 }
 
 form.parameters {
-  /*max-width: 200px;*/
-  margin: 2px;
+  min-width: 100px;
+  margin: 10px;
   float: right;
-  background-color: bisque;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-shadow: 5px 5px 3px rgba(0,0,0,0.4);
 }
 
-  form.parameters > mat-form-field {
-    margin-left: 10px;
+form.parameters > h3 {
+  text-align: center;
+}
+
+  form.parameters > div > mat-form-field {
+    margin: 1px 5px 1px 5px;
+    min-width: 80px;
   }
 
   form.parameters > div {

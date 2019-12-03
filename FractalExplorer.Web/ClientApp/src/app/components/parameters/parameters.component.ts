@@ -11,8 +11,6 @@ import { ErrorStateMatcher } from '@angular/material/core';
 export class ParametersComponent implements OnInit {
   imageToShow: any;
   isImageLoading: boolean = true;
-  imageWidth: number = 600;
-  imageHeight: number = 600;
   fractalList: string[];
   parametersForm: FormGroup;
   errorMatcher = new CrossFieldErrorMatcher();
@@ -31,6 +29,10 @@ export class ParametersComponent implements OnInit {
     });
 
     this.parametersForm = this.fb.group({
+      imageSize: this.fb.group({
+        height: ['600', [Validators.required, Validators.min(100)]],
+        width: ['600', [Validators.required, Validators.min(100)]],
+      }),
       xGroup: this.fb.group({
         xMinimum: ['-2', Validators.required],
         xMaximum: ['2', Validators.required]
@@ -49,7 +51,8 @@ export class ParametersComponent implements OnInit {
 
   onSubmit() {
     this.isImageLoading = true;
-    this.fractalService.getFractalImage(this.imageHeight, this.imageWidth,
+    this.fractalService.getFractalImage(
+      this.parametersForm.get("imageSize.height").value, this.parametersForm.get("imageSize.width").value,
       this.parametersForm.get("xGroup.xMinimum").value, this.parametersForm.get("xGroup.xMaximum").value,
       this.parametersForm.get("yGroup.yMinimum").value, this.parametersForm.get("yGroup.yMaximum").value,
       this.parametersForm.get("maxIterations").value, this.parametersForm.get("colorType").value,

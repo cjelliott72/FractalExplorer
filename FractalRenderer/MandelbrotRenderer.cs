@@ -16,7 +16,7 @@ namespace FractalRenderer
         /// <inheritdoc/>
         public Task<Bitmap> Render(ParametersDto parameters, IFractal fractal)
         {
-            Bitmap bitmap = new Bitmap(parameters.Height, parameters.Width, PixelFormat.Format24bppRgb);
+            Bitmap bitmap = new Bitmap(parameters.Width, parameters.Height, PixelFormat.Format24bppRgb);
             double xJump = (parameters.xMaximum - parameters.xMinimum) / parameters.Width;
             double yJump = (parameters.yMaximum - parameters.yMinimum) / parameters.Height;
 

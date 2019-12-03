@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatTabsModule } from '@angular/material';
+import { MatTabsModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatListModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
@@ -15,6 +15,9 @@ import { HomeComponent } from './components/home/home.component';
 import { ParametersComponent } from './components/parameters/parameters.component';
 import { ExplorerComponent } from './components/explorer/explorer.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { LayoutComponent } from './components/layout/layout.component';
     ParametersComponent,
     ExplorerComponent,
     LayoutComponent,
+    HeaderComponent,
+    SidenavListComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -35,6 +41,10 @@ import { LayoutComponent } from './components/layout/layout.component';
     MatSelectModule,
     MatTabsModule,
     FlexLayoutModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

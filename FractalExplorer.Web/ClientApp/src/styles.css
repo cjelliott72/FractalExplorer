@@ -3,12 +3,19 @@
 
 html, body {
   height: 100%;
-  background-color: slategrey;
 }
 
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.layout-wrapper {
+  height: 100%;
+}
+
+.flex-wrapper {
+  height: 100%;
 }
 
 form.parameters {

@@ -6,17 +6,23 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatTabsModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { ParametersComponent } from './components/parameters/parameters.component';
+import { ExplorerComponent } from './components/explorer/explorer.component';
+import { LayoutComponent } from './components/layout/layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ParametersComponent,
+    ExplorerComponent,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -27,6 +33,8 @@ import { ParametersComponent } from './components/parameters/parameters.componen
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
+    MatTabsModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

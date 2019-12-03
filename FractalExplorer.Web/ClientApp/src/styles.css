@@ -12,7 +12,6 @@ body {
 }
 
 form.parameters {
-  min-width: 100px;
   margin: 10px;
   float: right;
   background-color: white;
@@ -27,7 +26,6 @@ form.parameters > h3 {
 
   form.parameters > div > mat-form-field {
     margin: 1px 5px 1px 5px;
-    min-width: 80px;
   }
 
   form.parameters > div {

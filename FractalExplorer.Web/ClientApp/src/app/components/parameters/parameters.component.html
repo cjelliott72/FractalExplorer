@@ -43,14 +43,15 @@
     </mat-form-field>
   </div>
   <div>
-    <mat-form-field appearance="standard">
-      <mat-label>Maximum Iterations</mat-label>
-      <input type="number" matInput placeholder="Maximum Iterations" formControlName="maxIterations" step="1" min="1">
-      <mat-error *ngIf="parametersForm.get('maxIterations').hasError('required')">Value is required</mat-error>
-      <mat-error *ngIf="parametersForm.get('maxIterations').hasError('min')">Value must be 1 or higher</mat-error>
+    <mat-form-field hideRequiredMarker>
+      <mat-select required formControlName="fractalName" placeholder="Select Fractal">
+        <mat-option *ngFor="let fractal of this.fractalList" [value]="fractal">
+          {{fractal}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="parametersForm.get('fractalName').hasError('required')">Value is required</mat-error>
+      <mat-label>Select Fractal</mat-label>
     </mat-form-field>
-  </div>
-  <div>
     <mat-form-field hideRequiredMarker>
       <mat-select required formControlName="colorType">
         <mat-option value="0">Black & White</mat-option>
@@ -61,14 +62,11 @@
     </mat-form-field>
   </div>
   <div>
-    <mat-form-field hideRequiredMarker>
-      <mat-select required formControlName="fractalName" placeholder="Select Fractal">
-        <mat-option *ngFor="let fractal of this.fractalList" [value]="fractal">
-          {{fractal}}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="parametersForm.get('fractalName').hasError('required')">Value is required</mat-error>
-      <mat-label>Select Fractal</mat-label>
+    <mat-form-field appearance="standard">
+      <mat-label>Maximum Iterations</mat-label>
+      <input type="number" matInput placeholder="Maximum Iterations" formControlName="maxIterations" step="1" min="1">
+      <mat-error *ngIf="parametersForm.get('maxIterations').hasError('required')">Value is required</mat-error>
+      <mat-error *ngIf="parametersForm.get('maxIterations').hasError('min')">Value must be 1 or higher</mat-error>
     </mat-form-field>
   </div>
   <div>

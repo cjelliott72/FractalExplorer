@@ -74,11 +74,3 @@
     <button (click)="resetFormData()" mat-stroked-button [disabled]="parametersForm.pristine">Reset</button>
   </div>
 </form>
-<div>
-  <img [src]="imageToShow"
-       alt="Place image title"
-       *ngIf="!isImageLoading; else noImageFound">
-  <ng-template #noImageFound>
-    <div></div>
-  </ng-template>
-</div>

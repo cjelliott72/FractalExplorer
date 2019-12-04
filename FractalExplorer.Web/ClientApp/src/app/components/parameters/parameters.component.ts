@@ -1,23 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
 import { FractalService } from '../../services/fractal.service';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-parameters',
   templateUrl: './parameters.component.html',
 })
 export class ParametersComponent implements OnInit {
-  imageToShow: any;
-  isImageLoading: boolean = true;
   fractalList: string[];
   parametersForm: FormGroup;
   errorMatcher = new CrossFieldErrorMatcher();
   originalData: any;
+  @Output() onRequestImage = new EventEmitter();
+  @Output() onReceiveImage = new EventEmitter<any>();
+  @Output() onReceiveError = new EventEmitter<any>();
 
-  constructor(
-    private fb: FormBuilder,
+  constructor(private fb: FormBuilder,
     private fractalService: FractalService,
     private sanitizer: DomSanitizer) { }
 
@@ -50,7 +50,7 @@ export class ParametersComponent implements OnInit {
   }
 
   onSubmit() {
-    this.isImageLoading = true;
+    this.onRequestImage.emit();
     this.fractalService.getFractalImage(
       this.parametersForm.get("imageSize.height").value, this.parametersForm.get("imageSize.width").value,
       this.parametersForm.get("xGroup.xMinimum").value, this.parametersForm.get("xGroup.xMaximum").value,
@@ -59,10 +59,9 @@ export class ParametersComponent implements OnInit {
       this.parametersForm.get("fractalName").value)
       .subscribe((blob: any) => {
         let objectURL = 'data:image/jpeg;base64,' + blob;
-        this.imageToShow = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-        this.isImageLoading = false;
+        this.onReceiveImage.emit(this.sanitizer.bypassSecurityTrustUrl(objectURL));
       }, error => {
-        this.isImageLoading = false;
+        this.onReceiveError.emit(error);
         console.log(error);
       });
   }

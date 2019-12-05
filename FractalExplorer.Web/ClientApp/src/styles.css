@@ -103,3 +103,10 @@ div.image {
   min-width: 200px;
   margin: 0 auto;
 }
+
+.homeBackground {
+  min-height: 500px;
+  min-width: 500px;
+  background: linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url("./assets/images/mandelbrot-bw.jpg")no-repeat center center;
+  background-size: cover;
+}

@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\components\header\header.component.html~RF158f7a82.TMP" />
     <None Remove="ClientApp\src\app\components\parameters\parameters.component.ts~RFd7d9270.TMP" />
   </ItemGroup>
 

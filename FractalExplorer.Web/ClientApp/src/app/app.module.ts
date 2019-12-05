@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatTabsModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatListModule } from '@angular/material';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
@@ -47,6 +48,7 @@ import { AboutComponent } from './components/about/about.component';
     MatIconModule,
     MatListModule,
     MatProgressSpinnerModule,
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -81,3 +81,25 @@ form.parameters {
   form.parameters > div {
     text-align: center;
   }
+
+div.imageFrame {
+  width: 510px;
+  height: 510px;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-shadow: 5px 5px 3px rgba(0,0,0,0.4);
+  display: table-cell;
+  vertical-align: middle;
+}
+
+div.spinnerFrame {
+  height: 100px;
+  width: 100px;
+  margin: 0 auto;
+}
+
+div.image {
+  height: 500px;
+  width: 500px;
+  margin: 0 auto;
+}

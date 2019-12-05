@@ -1,12 +1,13 @@
-<h2>Explorer Page</h2>
 <app-parameters (onRequestImage)="setRequestedState()"
                 (onReceiveImage)="setReceivedImage($event)"
                 (onReceiveError)="setReceivedError($event)"></app-parameters>
-<div #imageFrame>
-  <div *ngIf="isImageLoading; else showImage">
+<div class="imageFrame">
+  <div class="spinnerFrame" *ngIf="isImageLoading; else showImage">
     <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
   </div>
   <ng-template #showImage>
-    <img #outputImage [src]="imageToShow" alt="Fractal Image" *ngIf="!isImageEmpty" />
+    <div class="image">
+      <img #outputImage [src]="imageToShow" alt="Fractal Image" *ngIf="!isImageEmpty" />
+    </div>
   </ng-template>
 </div>

@@ -30,8 +30,8 @@ export class ParametersComponent implements OnInit {
 
     this.parametersForm = this.fb.group({
       imageSize: this.fb.group({
-        height: ['600', [Validators.required, Validators.min(100)]],
-        width: ['600', [Validators.required, Validators.min(100)]],
+        height: ['500', [Validators.required, Validators.min(100)]],
+        width: ['500', [Validators.required, Validators.min(100)]],
       }),
       xGroup: this.fb.group({
         xMinimum: ['-2', Validators.required],

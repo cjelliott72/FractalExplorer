@@ -31,12 +31,12 @@ main {
   padding: 10px;
 }
 
-a {
+a.navAnchor {
   text-decoration: none;
   color: white;
 }
 
-  a:hover, a:active {
+  a.navAnchor:hover, a:active {
     color: lightgray;
   }
 

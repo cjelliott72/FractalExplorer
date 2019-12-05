@@ -16,6 +16,7 @@ export class ParametersComponent implements OnInit {
   @Output() onRequestImage = new EventEmitter();
   @Output() onReceiveImage = new EventEmitter<any>();
   @Output() onReceiveError = new EventEmitter<any>();
+  @Output() onResizeImage = new EventEmitter<any>();
 
   constructor(private fb: FormBuilder,
     private fractalService: FractalService,
@@ -30,8 +31,8 @@ export class ParametersComponent implements OnInit {
 
     this.parametersForm = this.fb.group({
       imageSize: this.fb.group({
-        height: ['500', [Validators.required, Validators.min(100)]],
-        width: ['500', [Validators.required, Validators.min(100)]],
+        height: ['500', [Validators.required, Validators.min(200)]],
+        width: ['500', [Validators.required, Validators.min(200)]],
       }),
       xGroup: this.fb.group({
         xMinimum: ['-2', Validators.required],
@@ -50,6 +51,11 @@ export class ParametersComponent implements OnInit {
   }
 
   onSubmit() {
+    this.onResizeImage.emit(
+      {
+        height: this.parametersForm.get("imageSize.height").value,
+        width: this.parametersForm.get("imageSize.width").value
+      });
     this.onRequestImage.emit();
     this.fractalService.getFractalImage(
       this.parametersForm.get("imageSize.height").value, this.parametersForm.get("imageSize.width").value,

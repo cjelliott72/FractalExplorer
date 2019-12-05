@@ -8,6 +8,8 @@ export class ExplorerComponent {
   isImageEmpty: boolean = true;
   isImageLoading: boolean = false;
   imageToShow: any;
+  height: number = 500;
+  width: number = 500;
 
   constructor() { }
 
@@ -24,5 +26,10 @@ export class ExplorerComponent {
   setReceivedError($event) {
     this.isImageLoading = false;
     console.error($event);
+  }
+
+  setImageDimensions($event) {
+    this.height = $event.height;
+    this.width = $event.width;
   }
 }

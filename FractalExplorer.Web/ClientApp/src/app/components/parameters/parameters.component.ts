@@ -72,6 +72,10 @@ export class ParametersComponent implements OnInit {
       });
   }
 
+  protected saveFormData() {
+    this.originalData = this.parametersForm.value;
+  }
+
   protected resetFormData() {
     this.parametersForm.setValue(this.originalData);
     this.parametersForm.markAsPristine();

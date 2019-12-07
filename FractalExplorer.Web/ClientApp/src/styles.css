@@ -61,8 +61,7 @@ mat-toolbar {
   }
 }
 
-form.parameters {
-  margin: 10px;
+div.parameters {
   float: right;
   background-color: white;
   border: 1px solid black;
@@ -70,15 +69,19 @@ form.parameters {
   box-shadow: 5px 5px 3px rgba(0,0,0,0.4);
 }
 
-  form.parameters > h3 {
+div.parameters > form {
+  margin: 10px;
+}
+
+  div.parameters > form > h3 {
     text-align: center;
   }
 
-  form.parameters > div > mat-form-field {
+  div.parameters > form > div > mat-form-field {
     margin: 1px 5px 1px 5px;
   }
 
-  form.parameters > div {
+  div.parameters > div {
     text-align: center;
   }
 
@@ -107,6 +110,13 @@ div.image {
 .homeBackground {
   min-height: 500px;
   min-width: 500px;
-  background: linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url("./assets/images/mandelbrot-bw.jpg")no-repeat center center;
+  background: linear-gradient(rgba(255,255,255,.85), rgba(255,255,255,.8)), url("./assets/images/mandelbrot-bw.jpg")no-repeat center center;
+  background-size: cover;
+}
+
+.aboutBackground {
+  min-height: 500px;
+  min-width: 500px;
+  background: linear-gradient(rgba(255,255,255,.85), rgba(255,255,255,.8)), url("./assets/images/mandelbrot-bw-zoom1.jpg")no-repeat center center;
   background-size: cover;
 }

@@ -1,17 +1,12 @@
-<h2>About Fractal Explorer</h2>
-<p>Before running this application in your local development environment, please check you have the required dependencies installed.</p>
+<section fxLayout="column" fxFlexAlign="stretch" class="aboutBackground">
+  <h2>About Fractal Explorer</h2>
+  <h4>Dependency Information</h4>
+  <p>This application was written using <a href="https://visualstudio.microsoft.com/vs/">Visual Studio 2019 Community Edition</a> version 16.4.0</p>
+  <p>The web client is built using <a href="https://angular.io/">Angular 8 (build 8.3.19)</a> and <a href="https://material.angular.io/">Angular Material UI</a> which requires <a href="https://nodejs.org/en/">Node.js</a> version 12.13 to be installed.
+  If you have the above version of Visual Studio and Node.js installed, all you need to do is load, build and run the application.
+  The first time you build the application, Nuget will automatically install the required packages and this can take a few minutes to complete.</p>
 
-<h4>Dependency Information</h4>
-<p>This application was written using <a href="https://visualstudio.microsoft.com/vs/">Visual Studio 2019 Community Edition</a> version 16.4.0</p>
-<p>The web client is built using <a href="https://angular.io/">Angular 8 (build 8.3.19)</a> and <a href="https://material.angular.io/">Angular Material UI</a> which requires <a href="https://nodejs.org/en/">Node.js</a> version 12.13 to be installed.</p>
-<p>If you have the above version of Visual Studio and Node.js installed, all you need to do is load, build and run the application.</p>
-<p>The first time you build the application, Nuget will automatically install the required packages and this can take a few minutes to complete.</p>
-
-<h4>Project Architecture</h4>
-<p>The project uses the <a href="https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-3.0">ASP.Net Core 3.0</a> Web Application template for Angular 8. This allows the Angular client and the server Web API to reside in the same project which is ideal for prototype applications like this.</p>
-<p>The FractalRenderer library provides the functionality to calculate and generate the images. This is used by the FractalExplorer.Web API to expose the library methods over the web.</p>
-<p>The web client allows you to specify the parameters for the final image, including the dimensions, x-y axis coordinates, fractal type and color scheme.</p>
-<p>You can zoom in or out of the displayed fractals by adjusting the x-y coordinate values (or by using a Zoom window which is still under development).</p>
-<p></p>
-<p></p>
-<p></p>
+  <h4>Project Architecture</h4>
+  <p>The project uses the <a href="https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-3.0">ASP.Net Core 3.0</a> Web Application template for Angular 8. This allows the Angular client and the server Web API to reside in the same project which is ideal for prototype applications like this.</p>
+  <p>The FractalRenderer library provides the functionality to calculate and generate the images. This is used by the FractalExplorer.Web API to expose the library methods over the web.</p>
+  </section>

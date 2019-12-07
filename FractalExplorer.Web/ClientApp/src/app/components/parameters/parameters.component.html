@@ -1,76 +1,79 @@
-<form [formGroup]="parametersForm" (ngSubmit)="onSubmit()" class="parameters">
-  <h3>Fractal Parameters</h3>
-  <div formGroupName="imageSize">
-    <mat-form-field appearance="standard">
-      <mat-label>Image Height</mat-label>
-      <input type="number" matInput placeholder="Height (pixels)" formControlName="height" step="1" min="200">
-      <mat-error *ngIf="parametersForm.get('imageSize.height').hasError('required')">Value is required</mat-error>
-      <mat-error *ngIf="parametersForm.get('imageSize.height').hasError('min')">Value must be 200 or higher</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="standard">
-      <mat-label>Image Width</mat-label>
-      <input type="number" matInput placeholder="Width (pixels)" formControlName="width" step="1" min="200">
-      <mat-error *ngIf="parametersForm.get('imageSize.width').hasError('required')">Value is required</mat-error>
-      <mat-error *ngIf="parametersForm.get('imageSize.width').hasError('min')">Value must be 200 or higher</mat-error>
-    </mat-form-field>
-  </div>
-  <div formGroupName="xGroup">
-    <mat-form-field appearance="standard">
-      <mat-label>x Axis Minimum</mat-label>
-      <input type="number" matInput placeholder="x Axis Minimum" formControlName="xMinimum" step="0.1" [errorStateMatcher]="errorMatcher">
-      <mat-error *ngIf="parametersForm.get('xGroup.xMinimum').hasError('required')">Value is required</mat-error>
-      <mat-error *ngIf="parametersForm.get('xGroup').hasError('minNotLessThanMax')">Minimum not less than Maximum</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="standard">
-      <mat-label>x Axis Maximum</mat-label>
-      <input type="number" matInput placeholder="x Axis Maximum" formControlName="xMaximum" step="0.1" [errorStateMatcher]="errorMatcher">
-      <mat-error *ngIf="parametersForm.get('xGroup.xMaximum').hasError('required')">Value is required</mat-error>
-      <mat-error *ngIf="parametersForm.get('xGroup').hasError('minNotLessThanMax')">Minimum not less than Maximum</mat-error>
-    </mat-form-field>
-  </div>
-  <div formGroupName="yGroup">
-    <mat-form-field appearance="standard">
-      <mat-label>y Axis Minimum</mat-label>
-      <input type="number" matInput placeholder="y Axis Minimum" formControlName="yMinimum" step="0.1" [errorStateMatcher]="errorMatcher">
-      <mat-error *ngIf="parametersForm.get('yGroup.yMinimum').hasError('required')">Value is required</mat-error>
-      <mat-error *ngIf="parametersForm.get('yGroup').hasError('minNotLessThanMax')">Minimum not less than Maximum</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="standard">
-      <mat-label>y Axis Maximum</mat-label>
-      <input type="number" matInput placeholder="y Axis Maximum" formControlName="yMaximum" step="0.1" [errorStateMatcher]="errorMatcher">
-      <mat-error *ngIf="parametersForm.get('yGroup.yMaximum').hasError('required')">Value is required</mat-error>
-      <mat-error *ngIf="parametersForm.get('yGroup').hasError('minNotLessThanMax')">Minimum not less than Maximum</mat-error>
-    </mat-form-field>
-  </div>
+<div class="parameters">
+  <form [formGroup]="parametersForm">
+    <h3>Fractal Parameters</h3>
+    <div formGroupName="imageSize">
+      <mat-form-field appearance="standard">
+        <mat-label>Image Height</mat-label>
+        <input type="number" matInput placeholder="Height (pixels)" formControlName="height" step="1" min="200">
+        <mat-error *ngIf="parametersForm.get('imageSize.height').hasError('required')">Value is required</mat-error>
+        <mat-error *ngIf="parametersForm.get('imageSize.height').hasError('min')">Value must be 200 or higher</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Image Width</mat-label>
+        <input type="number" matInput placeholder="Width (pixels)" formControlName="width" step="1" min="200">
+        <mat-error *ngIf="parametersForm.get('imageSize.width').hasError('required')">Value is required</mat-error>
+        <mat-error *ngIf="parametersForm.get('imageSize.width').hasError('min')">Value must be 200 or higher</mat-error>
+      </mat-form-field>
+    </div>
+    <div formGroupName="xGroup">
+      <mat-form-field appearance="standard">
+        <mat-label>x Axis Minimum</mat-label>
+        <input type="number" matInput placeholder="x Axis Minimum" formControlName="xMinimum" step="0.1" [errorStateMatcher]="errorMatcher">
+        <mat-error *ngIf="parametersForm.get('xGroup.xMinimum').hasError('required')">Value is required</mat-error>
+        <mat-error *ngIf="parametersForm.get('xGroup').hasError('minNotLessThanMax')">Minimum not less than Maximum</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>x Axis Maximum</mat-label>
+        <input type="number" matInput placeholder="x Axis Maximum" formControlName="xMaximum" step="0.1" [errorStateMatcher]="errorMatcher">
+        <mat-error *ngIf="parametersForm.get('xGroup.xMaximum').hasError('required')">Value is required</mat-error>
+        <mat-error *ngIf="parametersForm.get('xGroup').hasError('minNotLessThanMax')">Minimum not less than Maximum</mat-error>
+      </mat-form-field>
+    </div>
+    <div formGroupName="yGroup">
+      <mat-form-field appearance="standard">
+        <mat-label>y Axis Minimum</mat-label>
+        <input type="number" matInput placeholder="y Axis Minimum" formControlName="yMinimum" step="0.1" [errorStateMatcher]="errorMatcher">
+        <mat-error *ngIf="parametersForm.get('yGroup.yMinimum').hasError('required')">Value is required</mat-error>
+        <mat-error *ngIf="parametersForm.get('yGroup').hasError('minNotLessThanMax')">Minimum not less than Maximum</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>y Axis Maximum</mat-label>
+        <input type="number" matInput placeholder="y Axis Maximum" formControlName="yMaximum" step="0.1" [errorStateMatcher]="errorMatcher">
+        <mat-error *ngIf="parametersForm.get('yGroup.yMaximum').hasError('required')">Value is required</mat-error>
+        <mat-error *ngIf="parametersForm.get('yGroup').hasError('minNotLessThanMax')">Minimum not less than Maximum</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field hideRequiredMarker>
+        <mat-select required formControlName="fractalName" placeholder="Select Fractal">
+          <mat-option *ngFor="let fractal of this.fractalList" [value]="fractal">
+            {{fractal}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="parametersForm.get('fractalName').hasError('required')">Value is required</mat-error>
+        <mat-label>Select Fractal</mat-label>
+      </mat-form-field>
+      <mat-form-field hideRequiredMarker>
+        <mat-select required formControlName="colorType">
+          <mat-option value="0">Black & White</mat-option>
+          <mat-option value="1">Blue Scheme</mat-option>
+          <mat-option value="2">Red Scheme</mat-option>
+        </mat-select>
+        <mat-label>Color Type</mat-label>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Maximum Iterations</mat-label>
+        <input type="number" matInput placeholder="Maximum Iterations" formControlName="maxIterations" step="1" min="1">
+        <mat-error *ngIf="parametersForm.get('maxIterations').hasError('required')">Value is required</mat-error>
+        <mat-error *ngIf="parametersForm.get('maxIterations').hasError('min')">Value must be 1 or higher</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
   <div>
-    <mat-form-field hideRequiredMarker>
-      <mat-select required formControlName="fractalName" placeholder="Select Fractal">
-        <mat-option *ngFor="let fractal of this.fractalList" [value]="fractal">
-          {{fractal}}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="parametersForm.get('fractalName').hasError('required')">Value is required</mat-error>
-      <mat-label>Select Fractal</mat-label>
-    </mat-form-field>
-    <mat-form-field hideRequiredMarker>
-      <mat-select required formControlName="colorType">
-        <mat-option value="0">Black & White</mat-option>
-        <mat-option value="1">Blue Scheme</mat-option>
-        <mat-option value="2">Red Scheme</mat-option>
-      </mat-select>
-      <mat-label>Color Type</mat-label>
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field appearance="standard">
-      <mat-label>Maximum Iterations</mat-label>
-      <input type="number" matInput placeholder="Maximum Iterations" formControlName="maxIterations" step="1" min="1">
-      <mat-error *ngIf="parametersForm.get('maxIterations').hasError('required')">Value is required</mat-error>
-      <mat-error *ngIf="parametersForm.get('maxIterations').hasError('min')">Value must be 1 or higher</mat-error>
-    </mat-form-field>
-  </div>
-  <div>
-    <button type="submit" mat-stroked-button color="primary" [disabled]="!parametersForm.valid">Submit</button>
+    <button (click)="onSubmit()" mat-stroked-button color="primary" [disabled]="!parametersForm.valid">Submit</button>
+    <button (click)="saveFormData()" mat-stroked-button [disabled]="!parametersForm.valid">Save</button>
     <button (click)="resetFormData()" mat-stroked-button [disabled]="parametersForm.pristine">Reset</button>
   </div>
-</form>
+</div>

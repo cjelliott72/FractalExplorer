@@ -72,8 +72,8 @@
     </div>
   </form>
   <div>
-    <button (click)="onSubmit()" mat-stroked-button color="primary" [disabled]="!parametersForm.valid">Submit</button>
-    <button (click)="saveFormData()" mat-stroked-button [disabled]="!parametersForm.valid">Save</button>
+    <button (click)="requestImage()" mat-stroked-button color="primary" [disabled]="!parametersForm.valid">Submit</button>
+    <button (click)="saveFormData()" mat-stroked-button [disabled]="!parametersForm.valid">Store</button>
     <button (click)="resetFormData()" mat-stroked-button [disabled]="parametersForm.pristine">Reset</button>
   </div>
 </div>

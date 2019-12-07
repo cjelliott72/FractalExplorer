@@ -50,11 +50,15 @@ export class ParametersComponent implements OnInit {
     this.originalData = this.parametersForm.value;
   }
 
-  onSubmit() {
+  requestImage() {
     this.onResizeImage.emit(
       {
         height: this.parametersForm.get("imageSize.height").value,
-        width: this.parametersForm.get("imageSize.width").value
+        width: this.parametersForm.get("imageSize.width").value,
+        xMin: this.parametersForm.get("xGroup.xMinimum").value,
+        xMax: this.parametersForm.get("xGroup.xMaximum").value,
+        yMin: this.parametersForm.get("yGroup.yMinimum").value,
+        yMax: this.parametersForm.get("yGroup.yMaximum").value
       });
     this.onRequestImage.emit();
     this.fractalService.getFractalImage(

@@ -10,6 +10,10 @@ export class ExplorerComponent {
   imageToShow: any;
   height: number = 500;
   width: number = 500;
+  xMin: number;
+  xMax: number;
+  yMin: number;
+  yMax: number;
 
   constructor() { }
 
@@ -31,5 +35,9 @@ export class ExplorerComponent {
   setImageDimensions($event) {
     this.height = $event.height;
     this.width = $event.width;
+    this.xMin = $event.xMin;
+    this.xMax = $event.xMax;
+    this.yMin = $event.yMin;
+    this.yMax = $event.yMax;
   }
 }

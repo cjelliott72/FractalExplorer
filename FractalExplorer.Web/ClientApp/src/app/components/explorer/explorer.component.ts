@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
 import { ZoomDialogComponent } from '../zoom-dialog/zoom-dialog.component';
 
 @Component({
@@ -23,7 +23,13 @@ export class ExplorerComponent {
   beginZoomIn() {
     if (this.isImageEmpty || this.isImageLoading) return;
 
-    this.zoomDialogRef = this.dialog.open(ZoomDialogComponent, { height: "200px", width: "200px", hasBackdrop: false });
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "200px";
+    dialogConfig.height = "200px";
+    dialogConfig.panelClass = "zoomDialog";
+
+
+    this.zoomDialogRef = this.dialog.open(ZoomDialogComponent, dialogConfig);
   }
 
   setRequestedState() {

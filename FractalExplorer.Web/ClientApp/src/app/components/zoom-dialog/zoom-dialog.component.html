@@ -1,9 +1,15 @@
-<div matDialogActions>
-  <mat-dialog-actions>
-    <button (click)="onConfirm.emit()" mat-mini-fab color="primary"><mat-icon>check</mat-icon></button>
-    <button (click)="onCancel.emit()" mat-mini-fab color="warn"><mat-icon>cancel</mat-icon></button>
-  </mat-dialog-actions>
-  <mat-dialog-content>
+<h1 mat-dialog-title
+    cdkDrag
+    cdkDragRootElement=".cdk-overlay-pane"
+    cdkDragHandle>
+  Zoom Window
+</h1>
+<div class="zoomDialog" mat-dialog-container>
+  <div mat-dialog-actions>
+    <button (click)="confirm()" mat-mini-fab color="primary"><mat-icon>check</mat-icon></button>
+    <button (click)="dialogRef.close()" mat-mini-fab color="warn"><mat-icon>cancel</mat-icon></button>
+  </div>
+  <div mat-dialog-content>
     +
-  </mat-dialog-content>
+  </div>
 </div>

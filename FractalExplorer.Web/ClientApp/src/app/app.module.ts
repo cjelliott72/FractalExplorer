@@ -8,6 +8,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatTabsModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatListModule, MatDialogModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -49,7 +50,8 @@ import { ZoomDialogComponent } from './components/zoom-dialog/zoom-dialog.compon
     MatIconModule,
     MatListModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    DragDropModule
   ],
   entryComponents: [ZoomDialogComponent],
   providers: [],

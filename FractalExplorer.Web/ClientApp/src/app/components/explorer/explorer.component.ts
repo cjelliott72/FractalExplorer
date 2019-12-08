@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { ZoomDialogComponent } from '../zoom-dialog/zoom-dialog.component';
 
 @Component({
   selector: 'app-explorer',
   templateUrl: './explorer.component.html',
 })
 export class ExplorerComponent {
+  zoomDialogRef: MatDialogRef<ZoomDialogComponent>;
   isImageEmpty: boolean = true;
   isImageLoading: boolean = false;
   imageToShow: any;
@@ -15,7 +18,13 @@ export class ExplorerComponent {
   yMin: number;
   yMax: number;
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
+
+  beginZoomIn() {
+    if (this.isImageEmpty || this.isImageLoading) return;
+
+    this.zoomDialogRef = this.dialog.open(ZoomDialogComponent, { height: "200px", width: "200px", hasBackdrop: false });
+  }
 
   setRequestedState() {
     this.isImageEmpty = false;

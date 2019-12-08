@@ -17,6 +17,7 @@ export class ParametersComponent implements OnInit {
   @Output() onReceiveImage = new EventEmitter<any>();
   @Output() onReceiveError = new EventEmitter<any>();
   @Output() onResizeImage = new EventEmitter<any>();
+  @Output() onZoomIn = new EventEmitter();
 
   constructor(private fb: FormBuilder,
     private fractalService: FractalService,

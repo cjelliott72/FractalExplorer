@@ -1,7 +1,8 @@
 <app-parameters (onRequestImage)="setRequestedState()"
                 (onReceiveImage)="setReceivedImage($event)"
                 (onReceiveError)="setReceivedError($event)"
-                (onResizeImage)="setImageDimensions($event)"></app-parameters>
+                (onResizeImage)="setImageDimensions($event)"
+                (onZoomIn)="beginZoomIn()"></app-parameters>
 <div class="imageFrame" [style.height.px]="height" [style.width.px]="width">
   <div class="spinnerFrame" *ngIf="isImageLoading; else showImage">
     <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>

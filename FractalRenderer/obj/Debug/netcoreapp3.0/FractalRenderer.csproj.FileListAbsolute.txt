@@ -7,3 +7,10 @@ C:\Users\cjell\source\repos\FractalExplorer\FractalRenderer\obj\Debug\netcoreapp
 C:\Users\cjell\source\repos\FractalExplorer\FractalRenderer\obj\Debug\netcoreapp3.0\FractalRenderer.pdb
 C:\Users\cjell\source\repos\FractalExplorer\FractalRenderer\bin\Debug\netcoreapp3.0\FractalRenderer.xml
 C:\Users\cjell\source\repos\FractalExplorer\FractalRenderer\obj\Debug\netcoreapp3.0\FractalRenderer.csprojAssemblyReference.cache
+D:\Source\Repos\FractalExplorer\FractalRenderer\bin\Debug\netcoreapp3.0\FractalRenderer.deps.json
+D:\Source\Repos\FractalExplorer\FractalRenderer\bin\Debug\netcoreapp3.0\FractalRenderer.dll
+D:\Source\Repos\FractalExplorer\FractalRenderer\bin\Debug\netcoreapp3.0\FractalRenderer.pdb
+D:\Source\Repos\FractalExplorer\FractalRenderer\obj\Debug\netcoreapp3.0\FractalRenderer.AssemblyInfoInputs.cache
+D:\Source\Repos\FractalExplorer\FractalRenderer\obj\Debug\netcoreapp3.0\FractalRenderer.AssemblyInfo.cs
+D:\Source\Repos\FractalExplorer\FractalRenderer\obj\Debug\netcoreapp3.0\FractalRenderer.dll
+D:\Source\Repos\FractalExplorer\FractalRenderer\obj\Debug\netcoreapp3.0\FractalRenderer.pdb

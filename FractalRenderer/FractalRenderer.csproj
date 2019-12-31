@@ -4,10 +4,6 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\cjell\source\repos\FractalExplorer\FractalRenderer\FractalRenderer.xml</DocumentationFile>
-  </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="System.Drawing.Common" Version="4.6.0" />
   </ItemGroup>

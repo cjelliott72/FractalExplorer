@@ -147,31 +147,34 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cjell\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\chris.RD-HQ\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cjell\\source\\repos\\FractalExplorer\\FractalRenderer\\FractalRenderer.csproj",
+      "projectUniqueName": "D:\\Source\\Repos\\FractalExplorer\\FractalRenderer\\FractalRenderer.csproj",
       "projectName": "FractalRenderer",
-      "projectPath": "C:\\Users\\cjell\\source\\repos\\FractalExplorer\\FractalRenderer\\FractalRenderer.csproj",
-      "packagesPath": "C:\\Users\\cjell\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cjell\\source\\repos\\FractalExplorer\\FractalRenderer\\obj\\",
+      "projectPath": "D:\\Source\\Repos\\FractalExplorer\\FractalRenderer\\FractalRenderer.csproj",
+      "packagesPath": "C:\\Users\\chris.RD-HQ\\.nuget\\packages\\",
+      "outputPath": "D:\\Source\\Repos\\FractalExplorer\\FractalRenderer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\cjell\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\chris.RD-HQ\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://pkgs.dev.azure.com/roadhouse-dev/_packaging/roadhouse/nuget/v3/index.json": {},
+        "https://slack-redir.net/link?url=https%3A%2F%2Fnuget.stage.roadhouse.com.au%2Fnuget%2F": {}
       },
       "frameworks": {
         "netcoreapp3.0": {
